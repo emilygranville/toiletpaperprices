@@ -125,12 +125,15 @@ public class TolietPaperPackage implements Serializable, Comparable<TolietPaperP
     /**
      * Compares the packages based price per square
      * @param o
-     * @return
+     * @return 1 when the first object is more expensive; -1 when less; 0 when equal
      */
     @Override
     public int compareTo(TolietPaperPackage o) {
         if (this.pricePerSquare > o.getPricePerSquare()) {
             return 1;
+        }
+        if (this.pricePerSquare < o.getPricePerSquare()) {
+            return -1;
         }
         return 0;
     }
