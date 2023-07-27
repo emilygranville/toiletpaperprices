@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  *
  * @author Emily
  */
-public class TolietPaperPackage implements Serializable {
+public class TolietPaperPackage implements Serializable, Comparable<TolietPaperPackage> {
 
     public enum Style{
         SOFT, STRONG, NORMAL
@@ -123,31 +123,14 @@ public class TolietPaperPackage implements Serializable {
     }
 
     /**
-     * Compares the packages based only on price per square
-     * @param otherPackage
+     * Compares the packages based price per square
+     * @param o
      * @return
      */
-    public int compareToPrice(TolietPaperPackage otherPackage) {
-        if (this.pricePerSquare > otherPackage.getPricePerSquare()) {
+    @Override
+    public int compareTo(TolietPaperPackage o) {
+        if (this.pricePerSquare > o.getPricePerSquare()) {
             return 1;
-        }
-        return 0;
-    }
-
-    /**
-     * Compares packages based only on style
-     * @param otherPackage
-     * @return
-     */
-    public int compareToStyle(TolietPaperPackage otherPackage) {
-        Style.values();
-        for(Style c : Style.values()) {
-            if (this.style == c) {
-                return 1;
-            }
-            if (otherPackage.getStyle() == c) {
-                return 0;
-            }
         }
         return 0;
     }

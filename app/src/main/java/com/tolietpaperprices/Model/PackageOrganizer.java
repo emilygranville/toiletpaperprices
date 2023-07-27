@@ -1,6 +1,7 @@
 package com.tolietpaperprices.Model;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,6 +57,29 @@ public class PackageOrganizer implements Serializable {
     }
 
     public void sortPackagesPrice() {
+        Collections.sort(listOfPackages);
+    }
 
+    public List<TolietPaperPackage> sortPackagesStyle() {
+        List<TolietPaperPackage> softRolls = new LinkedList<>();
+        List<TolietPaperPackage> strongRolls = new LinkedList<>();
+        List<TolietPaperPackage> normalRolls = new LinkedList<>();
+
+        for (TolietPaperPackage roll : this.listOfPackages) {
+            if (roll.style == TolietPaperPackage.Style.SOFT) {
+                softRolls.add(roll);
+            } else if (roll.style == TolietPaperPackage.Style.STRONG) {
+                strongRolls.add(roll);
+            } else {
+                normalRolls.add(roll);
+            }
+        }
+
+        List<TolietPaperPackage> total = new LinkedList<>();
+        total.addAll(softRolls);
+        total.addAll(strongRolls);
+        total.addAll(normalRolls);
+
+        return total;
     }
 }
