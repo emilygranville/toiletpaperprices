@@ -121,4 +121,34 @@ public class TolietPaperPackage implements Serializable {
     public void setDateOfEntry(LocalDateTime dateOfEntry) {
         this.dateOfEntry = LocalDateTime.now();
     }
+
+    /**
+     * Compares the packages based only on price per square
+     * @param otherPackage
+     * @return
+     */
+    public int compareToPrice(TolietPaperPackage otherPackage) {
+        if (this.pricePerSquare > otherPackage.getPricePerSquare()) {
+            return 1;
+        }
+        return 0;
+    }
+
+    /**
+     * Compares packages based only on style
+     * @param otherPackage
+     * @return
+     */
+    public int compareToStyle(TolietPaperPackage otherPackage) {
+        Style.values();
+        for(Style c : Style.values()) {
+            if (this.style == c) {
+                return 1;
+            }
+            if (otherPackage.getStyle() == c) {
+                return 0;
+            }
+        }
+        return 0;
+    }
 }

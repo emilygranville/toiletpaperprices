@@ -17,6 +17,11 @@ public class PackageOrganizer implements Serializable {
         listOfPackages = new LinkedList<TolietPaperPackage>();
     }
 
+    /**
+     * Adds new packages to the lists
+     * Sorts the packages as it adds them
+     * @param tPackage
+     */
     public void addPackage(TolietPaperPackage tPackage) {
         double pricePerSquare = tPackage.getPricePerSquare();
         Iterator<TolietPaperPackage> iterator = listOfPackages.iterator();
@@ -30,5 +35,27 @@ public class PackageOrganizer implements Serializable {
             index++;
         }
         listOfPackages.add(index, tPackage);
+    }
+
+    /**
+     * Replaces existing package with the new package with updated information
+     * @param newPackage
+     * @param index
+     */
+    public void editPackage(TolietPaperPackage newPackage, int index) {
+        listOfPackages.remove(index);
+        listOfPackages.set(index, newPackage);
+    }
+
+    /**
+     * Removes package at index
+     * @param index
+     */
+    public void deletePackage(int index) {
+        listOfPackages.remove(index);
+    }
+
+    public void sortPackagesPrice() {
+
     }
 }
