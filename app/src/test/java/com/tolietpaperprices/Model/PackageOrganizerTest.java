@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 class PackageOrganizerTest {
 
     TolietPaperPackage firstPackage = new TolietPaperPackage("Charmin",
@@ -62,13 +64,25 @@ class PackageOrganizerTest {
 
     @Test
     void softPackageList() {
+        startOrganizer();
+        List<TolietPaperPackage> softRolls = organizer.softPackageList();
+        assertEquals(1, softRolls.size());
+        assertEquals("Town 1", softRolls.get(0).getStoreTownName());
     }
 
     @Test
     void strongPackageList() {
+        startOrganizer();
+        List<TolietPaperPackage> strongRolls = organizer.strongPackageList();
+        assertEquals(1, strongRolls.size());
+        assertEquals("Town 2", strongRolls.get(0).getStoreTownName());
     }
 
     @Test
     void normalPackageList() {
+        startOrganizer();
+        List<TolietPaperPackage> normalRolls = organizer.normalPackageList();
+        assertEquals(1, normalRolls.size());
+        assertEquals("Town 3", normalRolls.get(0).getStoreTownName());
     }
 }
