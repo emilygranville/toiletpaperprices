@@ -14,8 +14,19 @@ import java.util.List;
 public class PackageOrganizer implements Serializable {
     List<TolietPaperPackage> listOfPackages;
 
+    /**
+     * Default constructor of PackageOrganizer
+     */
     public PackageOrganizer() {
         listOfPackages = new LinkedList<TolietPaperPackage>();
+    }
+
+    /**
+     * Getter for listOfPackages
+     * @return
+     */
+    public List<TolietPaperPackage> getListOfPackages() {
+        return listOfPackages;
     }
 
     /**
