@@ -12,7 +12,7 @@ import java.util.List;
  * @author Emily
  */
 public class PackageOrganizer implements Serializable {
-    List<TolietPaperPackage> listOfPackages;
+    private List<TolietPaperPackage> listOfPackages;
 
     /**
      * Default constructor of PackageOrganizer
@@ -91,7 +91,7 @@ public class PackageOrganizer implements Serializable {
     public List<TolietPaperPackage> softPackageList() {
         List<TolietPaperPackage> softRolls = new LinkedList<>();
         for (TolietPaperPackage roll : this.listOfPackages) {
-            if (roll.style == TolietPaperPackage.Style.SOFT) {
+            if (roll.getStyle() == TolietPaperPackage.Style.SOFT) {
                 softRolls.add(roll);
             }
         }
@@ -106,7 +106,7 @@ public class PackageOrganizer implements Serializable {
     public List<TolietPaperPackage> strongPackageList() {
         List<TolietPaperPackage> strongRolls = new LinkedList<>();
         for (TolietPaperPackage roll : this.listOfPackages) {
-            if (roll.style == TolietPaperPackage.Style.STRONG) {
+            if (roll.getStyle() == TolietPaperPackage.Style.STRONG) {
                 strongRolls.add(roll);
             }
         }
@@ -121,7 +121,7 @@ public class PackageOrganizer implements Serializable {
     public List<TolietPaperPackage> normalPackageList() {
         List<TolietPaperPackage> normalRolls = new LinkedList<>();
         for (TolietPaperPackage roll : this.listOfPackages) {
-            if (roll.style == TolietPaperPackage.Style.NORMAL) {
+            if (roll.getStyle() == TolietPaperPackage.Style.NORMAL) {
                 normalRolls.add(roll);
             }
         }

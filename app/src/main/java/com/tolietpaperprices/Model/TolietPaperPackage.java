@@ -14,15 +14,15 @@ public class TolietPaperPackage implements Serializable, Comparable<TolietPaperP
         SOFT, STRONG, NORMAL
     }
 
-    String brand;
-    Style style;
-    double price;
-    int numRolls;
-    int numSquaresPerRoll;
-    double pricePerSquare;
-    String storeName;
-    String storeTown;
-    LocalDateTime dateOfEntry;
+    private String brand;
+    private Style style;
+    private double price;
+    private int numRolls;
+    private int numSquaresPerRoll;
+    private double pricePerSquare;
+    private String storeName;
+    private String storeTownName;
+    private LocalDateTime dateOfEntry;
 
     /**
      * Default constructor
@@ -32,17 +32,17 @@ public class TolietPaperPackage implements Serializable, Comparable<TolietPaperP
      * @param numRolls
      * @param numSquaresPerRoll
      * @param storeName
-     * @param storeTown
+     * @param storeTownName
      */
     public TolietPaperPackage(String brand, Style style, double price, int numRolls,
-                              int numSquaresPerRoll, String storeName, String storeTown) {
+                              int numSquaresPerRoll, String storeName, String storeTownName) {
         this.brand = brand;
         this.style = style;
         this.price = price;
         this.numRolls = numRolls;
         this.numSquaresPerRoll = numSquaresPerRoll;
         this.storeName = storeName;
-        this.storeTown = storeTown;
+        this.storeTownName = storeTownName;
         this.dateOfEntry = LocalDateTime.now();
         this.pricePerSquare = this.price / (this.numSquaresPerRoll * this.numRolls);
     }
@@ -106,12 +106,12 @@ public class TolietPaperPackage implements Serializable, Comparable<TolietPaperP
         this.storeName = storeName;
     }
 
-    public String getStoreTown() {
-        return storeTown;
+    public String getStoreTownName() {
+        return storeTownName;
     }
 
-    public void setStoreTown(String storeTown) {
-        this.storeTown = storeTown;
+    public void setStoreTownName(String storeTownName) {
+        this.storeTownName = storeTownName;
     }
 
     public LocalDateTime getDateOfEntry() {

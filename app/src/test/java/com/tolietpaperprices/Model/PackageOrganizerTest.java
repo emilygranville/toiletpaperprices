@@ -40,7 +40,7 @@ class PackageOrganizerTest {
                 TolietPaperPackage.Style.STRONG, 3, 9, 8,
                 "Target", "Town 5");
         organizer.editPackage(newPackage, 1);
-        assertEquals("Town 5", organizer.getListOfPackages().get(1).getStoreTown());
+        assertEquals("Town 5", organizer.getListOfPackages().get(1).getStoreTownName());
     }
 
     @Test
@@ -48,8 +48,8 @@ class PackageOrganizerTest {
         startOrganizer();
         organizer.deletePackage(0);
         assertEquals(2, organizer.getListOfPackages().size());
-        assertEquals("Town 1", organizer.getListOfPackages().get(0).getStoreTown());
-        assertEquals("Town 3", organizer.getListOfPackages().get(1).getStoreTown());
+        assertEquals("Town 1", organizer.getListOfPackages().get(0).getStoreTownName());
+        assertEquals("Town 3", organizer.getListOfPackages().get(1).getStoreTownName());
     }
 
     @Test
