@@ -45,6 +45,11 @@ class PackageOrganizerTest {
 
     @Test
     void deletePackage() {
+        startOrganizer();
+        organizer.deletePackage(0);
+        assertEquals(2, organizer.getListOfPackages().size());
+        assertEquals("Town 1", organizer.getListOfPackages().get(0).getStoreTown());
+        assertEquals("Town 3", organizer.getListOfPackages().get(1).getStoreTown());
     }
 
     @Test
