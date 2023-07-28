@@ -18,6 +18,11 @@ class PackageOrganizerTest {
 
     PackageOrganizer organizer = new PackageOrganizer();
 
+    void startOrganizer() {
+        organizer.addPackage(firstPackage);
+        organizer.addPackage(secondPackage);
+        organizer.addPackage(thirdPackage);
+    }
     @Test
     void addPackage() {
         assertEquals(0, organizer.getListOfPackages().size());
@@ -30,6 +35,12 @@ class PackageOrganizerTest {
 
     @Test
     void editPackage() {
+        startOrganizer();
+        TolietPaperPackage newPackage = new TolietPaperPackage("Charmin",
+                TolietPaperPackage.Style.STRONG, 3, 9, 8,
+                "Target", "Town 5");
+        organizer.editPackage(newPackage, 1);
+        assertEquals("Town 5", organizer.getListOfPackages().get(1).getStoreTown());
     }
 
     @Test
