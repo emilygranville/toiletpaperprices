@@ -60,26 +60,61 @@ public class PackageOrganizer implements Serializable {
         Collections.sort(listOfPackages);
     }
 
+    /**
+     * Returns a list of packages sorted by price and style
+     * @return
+     */
     public List<TolietPaperPackage> sortPackagesStyle() {
-        List<TolietPaperPackage> softRolls = new LinkedList<>();
-        List<TolietPaperPackage> strongRolls = new LinkedList<>();
-        List<TolietPaperPackage> normalRolls = new LinkedList<>();
+        List<TolietPaperPackage> total = new LinkedList<>();
+        total.addAll(softPackageList());
+        total.addAll(strongPackageList());
+        total.addAll(normalPackageList());
 
+        return total;
+    }
+
+    /**
+     * Returns a list of packages with soft style
+     * @return
+     */
+    public List<TolietPaperPackage> softPackageList() {
+        List<TolietPaperPackage> softRolls = new LinkedList<>();
         for (TolietPaperPackage roll : this.listOfPackages) {
             if (roll.style == TolietPaperPackage.Style.SOFT) {
                 softRolls.add(roll);
-            } else if (roll.style == TolietPaperPackage.Style.STRONG) {
+            }
+        }
+
+        return softRolls;
+    }
+
+    /**
+     * Returns a list of packages with strong style
+     * @return
+     */
+    public List<TolietPaperPackage> strongPackageList() {
+        List<TolietPaperPackage> strongRolls = new LinkedList<>();
+        for (TolietPaperPackage roll : this.listOfPackages) {
+            if (roll.style == TolietPaperPackage.Style.STRONG) {
                 strongRolls.add(roll);
-            } else {
+            }
+        }
+
+        return strongRolls;
+    }
+
+    /**
+     * Returns a list of packages with normal style
+     * @return
+     */
+    public List<TolietPaperPackage> normalPackageList() {
+        List<TolietPaperPackage> normalRolls = new LinkedList<>();
+        for (TolietPaperPackage roll : this.listOfPackages) {
+            if (roll.style == TolietPaperPackage.Style.NORMAL) {
                 normalRolls.add(roll);
             }
         }
 
-        List<TolietPaperPackage> total = new LinkedList<>();
-        total.addAll(softRolls);
-        total.addAll(strongRolls);
-        total.addAll(normalRolls);
-
-        return total;
+        return normalRolls;
     }
 }
