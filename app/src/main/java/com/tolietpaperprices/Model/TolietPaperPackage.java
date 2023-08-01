@@ -72,6 +72,7 @@ public class TolietPaperPackage implements Serializable, Comparable<TolietPaperP
 
     public void setPrice(double price) {
         this.price = price;
+        calculatePricePerSquare();
     }
 
     public int getNumRolls() {
@@ -80,6 +81,7 @@ public class TolietPaperPackage implements Serializable, Comparable<TolietPaperP
 
     public void setNumRolls(int numRolls) {
         this.numRolls = numRolls;
+        calculatePricePerSquare();
     }
 
     public int getNumSquaresPerRoll() {
@@ -88,6 +90,7 @@ public class TolietPaperPackage implements Serializable, Comparable<TolietPaperP
 
     public void setNumSquaresPerRoll(int numSquaresPerRoll) {
         this.numSquaresPerRoll = numSquaresPerRoll;
+        calculatePricePerSquare();
     }
 
     public double getPricePerSquare() {
