@@ -1,4 +1,6 @@
-package com.tolietpaperprices.Model;
+package com.tolietpaperprices.Controller;
+
+import com.tolietpaperprices.Model.TolietPaperPackage;
 
 import java.io.Serializable;
 import java.util.Collections;

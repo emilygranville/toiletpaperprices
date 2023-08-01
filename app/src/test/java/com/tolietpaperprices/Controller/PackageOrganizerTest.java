@@ -1,6 +1,9 @@
-package com.tolietpaperprices.Model;
+package com.tolietpaperprices.Controller;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import com.tolietpaperprices.Controller.PackageOrganizer;
+import com.tolietpaperprices.Model.TolietPaperPackage;
 
 import org.junit.jupiter.api.Test;
 
