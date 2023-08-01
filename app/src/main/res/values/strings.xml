@@ -2,4 +2,19 @@
     <string name="app_name">Toliet Paper Prices</string>
     <string name="hello_display_fragment">Hello display fragment</string>
     <string name="hello_add_fragment">Hello add fragment</string>
+
+    <!-- Add paper fragment strings -->
+    <string name="brand_name_label">Brand name:</string>
+    <string name="brand_name_hint">brand name</string>
+    <string name="price_label">Price:</string>
+    <string name="price_hint">29.99</string>
+    <string name="num_rolls_label">Number of rolls:</string>
+    <string name="num_rolls_hint">20</string>
+    <string name="squares_per_roll_label">Number of squares per roll:</string>
+    <string name="squares_per_roll_hint">100</string>
+    <string name="store_name_label">Store name:</string>
+    <string name="store_name_hint">store name</string>
+    <string name="store_town_name_label">Town of store</string>
+    <string name="store_town_name_hint">store town name</string>
+    <string name="add_tp_done_button_label">DONE</string>
 </resources>
