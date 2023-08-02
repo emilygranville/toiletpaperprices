@@ -3,6 +3,11 @@
     <string name="hello_display_fragment">Hello display fragment</string>
     <string name="hello_add_fragment">Hello add fragment</string>
 
+    <!-- Main activity strings -->
+    <string name="about_button_label">ABOUT</string>
+    <string name="display_button_label">DISPLAY LIST</string>
+    <string name="add_button_label">ADD PACKAGES</string>
+
     <!-- Add paper fragment strings -->
     <string name="brand_name_label">Brand name:</string>
     <string name="brand_name_hint">brand name</string>

@@ -6,16 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".Controller.MainActivity">
 
+    <LinearLayout
+        android:id="@+id/menu_hlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/about_menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/about_button_label" />
+
+        <Button
+            android:id="@+id/display_menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/display_button_label" />
+
+        <Button
+            android:id="@+id/add_menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/add_button_label" />
+    </LinearLayout>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainfragmentContainer"
-        android:layout_width="wrap_content"
+        android:name="com.tolietpaperprices.View.AddToiletpaper"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="411dp"
-        android:layout_marginBottom="731dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:name="com.tolietpaperprices.View.DisplayToiletpaper"
-        tools:layout="@layout/fragment_display_toiletpaper" />
+        app:layout_constraintTop_toTopOf="@id/menu_hlayout"
+        tools:layout="@layout/fragment_add_toiletpaper" />
 </androidx.constraintlayout.widget.ConstraintLayout>
