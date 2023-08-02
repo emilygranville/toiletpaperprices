@@ -1,6 +1,6 @@
 package com.tolietpaperprices.Controller;
 
-import com.tolietpaperprices.Model.TolietPaperPackage;
+import com.tolietpaperprices.Model.TPPackage;
 
 import java.io.Serializable;
 import java.util.Collections;
@@ -14,20 +14,20 @@ import java.util.List;
  * @author Emily
  */
 public class PackageOrganizer implements Serializable {
-    private List<TolietPaperPackage> listOfPackages;
+    private List<TPPackage> listOfPackages;
 
     /**
      * Default constructor of PackageOrganizer
      */
     public PackageOrganizer() {
-        listOfPackages = new LinkedList<TolietPaperPackage>();
+        listOfPackages = new LinkedList<TPPackage>();
     }
 
     /**
      * Getter for listOfPackages
      * @return
      */
-    public List<TolietPaperPackage> getListOfPackages() {
+    public List<TPPackage> getListOfPackages() {
         return listOfPackages;
     }
 
@@ -36,13 +36,13 @@ public class PackageOrganizer implements Serializable {
      * Sorts the packages as it adds them
      * @param tPackage
      */
-    public void addPackage(TolietPaperPackage tPackage) {
+    public void addPackage(TPPackage tPackage) {
         double pricePerSquare = tPackage.getPricePerSquare();
-        Iterator<TolietPaperPackage> iterator = listOfPackages.iterator();
+        Iterator<TPPackage> iterator = listOfPackages.iterator();
         int index = 0;
 
         while (iterator.hasNext()) {
-            TolietPaperPackage next = iterator.next();
+            TPPackage next = iterator.next();
             if (next.getPricePerSquare() >= pricePerSquare) {
                 break;
             }
@@ -56,7 +56,7 @@ public class PackageOrganizer implements Serializable {
      * @param newPackage
      * @param index
      */
-    public void editPackage(TolietPaperPackage newPackage, int index) {
+    public void editPackage(TPPackage newPackage, int index) {
         listOfPackages.remove(index);
         listOfPackages.set(index, newPackage);
     }
@@ -77,8 +77,8 @@ public class PackageOrganizer implements Serializable {
      * Returns a list of packages sorted by price and style
      * @return
      */
-    public List<TolietPaperPackage> sortPackagesStyle() {
-        List<TolietPaperPackage> total = new LinkedList<>();
+    public List<TPPackage> sortPackagesStyle() {
+        List<TPPackage> total = new LinkedList<>();
         total.addAll(softPackageList());
         total.addAll(strongPackageList());
         total.addAll(normalPackageList());
@@ -90,10 +90,10 @@ public class PackageOrganizer implements Serializable {
      * Returns a list of packages with soft style
      * @return
      */
-    public List<TolietPaperPackage> softPackageList() {
-        List<TolietPaperPackage> softRolls = new LinkedList<>();
-        for (TolietPaperPackage roll : this.listOfPackages) {
-            if (roll.getStyle() == TolietPaperPackage.Style.SOFT) {
+    public List<TPPackage> softPackageList() {
+        List<TPPackage> softRolls = new LinkedList<>();
+        for (TPPackage roll : this.listOfPackages) {
+            if (roll.getStyle() == TPPackage.Style.SOFT) {
                 softRolls.add(roll);
             }
         }
@@ -105,10 +105,10 @@ public class PackageOrganizer implements Serializable {
      * Returns a list of packages with strong style
      * @return
      */
-    public List<TolietPaperPackage> strongPackageList() {
-        List<TolietPaperPackage> strongRolls = new LinkedList<>();
-        for (TolietPaperPackage roll : this.listOfPackages) {
-            if (roll.getStyle() == TolietPaperPackage.Style.STRONG) {
+    public List<TPPackage> strongPackageList() {
+        List<TPPackage> strongRolls = new LinkedList<>();
+        for (TPPackage roll : this.listOfPackages) {
+            if (roll.getStyle() == TPPackage.Style.STRONG) {
                 strongRolls.add(roll);
             }
         }
@@ -120,10 +120,10 @@ public class PackageOrganizer implements Serializable {
      * Returns a list of packages with normal style
      * @return
      */
-    public List<TolietPaperPackage> normalPackageList() {
-        List<TolietPaperPackage> normalRolls = new LinkedList<>();
-        for (TolietPaperPackage roll : this.listOfPackages) {
-            if (roll.getStyle() == TolietPaperPackage.Style.NORMAL) {
+    public List<TPPackage> normalPackageList() {
+        List<TPPackage> normalRolls = new LinkedList<>();
+        for (TPPackage roll : this.listOfPackages) {
+            if (roll.getStyle() == TPPackage.Style.NORMAL) {
                 normalRolls.add(roll);
             }
         }

@@ -1,15 +1,15 @@
 package com.tolietpaperprices.Model;
 
 import static org.junit.jupiter.api.Assertions.*;
-import android.util.Log;
+
 import org.junit.jupiter.api.Test;
 
 class TolietPaperPackageTest {
-    TolietPaperPackage firstPackage = new TolietPaperPackage("Charmin",
-            TolietPaperPackage.Style.SOFT, 5, 10, 6,
+    TPPackage firstPackage = new TPPackage("Charmin",
+            TPPackage.Style.SOFT, 5, 10, 6,
             "Target", "Town 1");
-    TolietPaperPackage secondPackage = new TolietPaperPackage("Charmin",
-            TolietPaperPackage.Style.STRONG, 3, 9, 8,
+    TPPackage secondPackage = new TPPackage("Charmin",
+            TPPackage.Style.STRONG, 3, 9, 8,
             "Target", "Town 2");
 
     @Test

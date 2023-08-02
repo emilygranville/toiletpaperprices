@@ -2,8 +2,7 @@ package com.tolietpaperprices.Controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.tolietpaperprices.Controller.PackageOrganizer;
-import com.tolietpaperprices.Model.TolietPaperPackage;
+import com.tolietpaperprices.Model.TPPackage;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,14 +10,14 @@ import java.util.List;
 
 class PackageOrganizerTest {
 
-    TolietPaperPackage firstPackage = new TolietPaperPackage("Charmin",
-            TolietPaperPackage.Style.SOFT, 5, 10, 6,
+    TPPackage firstPackage = new TPPackage("Charmin",
+            TPPackage.Style.SOFT, 5, 10, 6,
             "Target", "Town 1");
-    TolietPaperPackage secondPackage = new TolietPaperPackage("Charmin",
-            TolietPaperPackage.Style.STRONG, 3, 9, 8,
+    TPPackage secondPackage = new TPPackage("Charmin",
+            TPPackage.Style.STRONG, 3, 9, 8,
             "Target", "Town 2");
-    TolietPaperPackage thirdPackage = new TolietPaperPackage("Charmin",
-            TolietPaperPackage.Style.NORMAL, 10, 6, 11,
+    TPPackage thirdPackage = new TPPackage("Charmin",
+            TPPackage.Style.NORMAL, 10, 6, 11,
             "Target", "Town 3");
 
     PackageOrganizer organizer = new PackageOrganizer();
@@ -41,8 +40,8 @@ class PackageOrganizerTest {
     @Test
     void editPackage() {
         startOrganizer();
-        TolietPaperPackage newPackage = new TolietPaperPackage("Charmin",
-                TolietPaperPackage.Style.STRONG, 3, 9, 8,
+        TPPackage newPackage = new TPPackage("Charmin",
+                TPPackage.Style.STRONG, 3, 9, 8,
                 "Target", "Town 5");
         organizer.editPackage(newPackage, 1);
         assertEquals("Town 5", organizer.getListOfPackages().get(1).getStoreTownName());
@@ -68,7 +67,7 @@ class PackageOrganizerTest {
     @Test
     void softPackageList() {
         startOrganizer();
-        List<TolietPaperPackage> softRolls = organizer.softPackageList();
+        List<TPPackage> softRolls = organizer.softPackageList();
         assertEquals(1, softRolls.size());
         assertEquals("Town 1", softRolls.get(0).getStoreTownName());
     }
@@ -76,7 +75,7 @@ class PackageOrganizerTest {
     @Test
     void strongPackageList() {
         startOrganizer();
-        List<TolietPaperPackage> strongRolls = organizer.strongPackageList();
+        List<TPPackage> strongRolls = organizer.strongPackageList();
         assertEquals(1, strongRolls.size());
         assertEquals("Town 2", strongRolls.get(0).getStoreTownName());
     }
@@ -84,7 +83,7 @@ class PackageOrganizerTest {
     @Test
     void normalPackageList() {
         startOrganizer();
-        List<TolietPaperPackage> normalRolls = organizer.normalPackageList();
+        List<TPPackage> normalRolls = organizer.normalPackageList();
         assertEquals(1, normalRolls.size());
         assertEquals("Town 3", normalRolls.get(0).getStoreTownName());
     }

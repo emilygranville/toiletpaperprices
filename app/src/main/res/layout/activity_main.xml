@@ -41,7 +41,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainfragmentContainer"
-        android:name="com.tolietpaperprices.View.AddToiletpaper"
+        android:name="com.tolietpaperprices.View.AddTPView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
