@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.MainActivity">
+    tools:context=".View.MainView">
 
     <LinearLayout
         android:id="@+id/menu_hlayout"
@@ -41,7 +41,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainfragmentContainer"
-        android:name="com.tolietpaperprices.View.AddTPView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -51,6 +50,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/menu_hlayout"
-        tools:layout="@layout/fragment_add_toiletpaper" />
+        app:layout_constraintTop_toTopOf="@id/menu_hlayout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

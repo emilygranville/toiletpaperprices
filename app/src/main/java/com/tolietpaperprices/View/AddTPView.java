@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tolietpaperprices.R;
+import com.tolietpaperprices.databinding.FragmentAddTpBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,8 +17,10 @@ import com.tolietpaperprices.R;
  * create an instance of this fragment.
  */
 public class AddTPView extends Fragment implements IAddTPView {
+
+    FragmentAddTpBinding binding;
+
     public AddTPView() {
-        // Required empty public constructor
     }
 
     /**
@@ -48,6 +51,6 @@ public class AddTPView extends Fragment implements IAddTPView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_toiletpaper, container, false);
+        return this.binding.getRoot();
     }
 }
