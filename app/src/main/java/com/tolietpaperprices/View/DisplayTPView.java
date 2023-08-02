@@ -15,7 +15,7 @@ import com.tolietpaperprices.R;
  * Use the {@link DisplayTPView#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DisplayTPView extends Fragment {
+public class DisplayTPView extends Fragment implements IDisplayTPView {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
