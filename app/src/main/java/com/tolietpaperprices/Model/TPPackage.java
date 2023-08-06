@@ -11,17 +11,11 @@ import java.time.LocalDateTime;
 public class TPPackage implements Serializable, Comparable<TPPackage> {
     @Override
     public String toString() {
-        return "TPPackage{" +
-                "brand='" + brand + '\'' +
-                ", style=" + style +
-                ", price=" + price +
-                ", numRolls=" + numRolls +
-                ", numSquaresPerRoll=" + numSquaresPerRoll +
-                ", pricePerSquare=" + pricePerSquare +
-                ", storeName='" + storeName + '\'' +
-                ", storeTownName='" + storeTownName + '\'' +
-                ", dateOfEntry=" + dateOfEntry +
-                '}';
+        return String.format("Brand: %s, Style: %s, Price: $%.2f, Num Rolls: %d, Squares: %d, " +
+                "Price per square: $%f, Store: %s, Town: %s, Date: %s",
+                this.brand, this.style.toString(), this.price, this.numRolls,
+                this.numSquaresPerRoll, this.pricePerSquare, this.storeName,
+                this.storeTownName, this.dateOfEntry.toString());
     }
 
     public enum Style{

@@ -35,6 +35,18 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
             Fragment disaplayPackage = new DisplayTPView(this.packageOrganizer.getListOfPackages());
             this.mainView.displayFragment(disaplayPackage, false, "display");
         }
+
+        /* test*/
+        TPPackage firstPackage = new TPPackage("Charmin",
+                    TPPackage.Style.SOFT, 5, 10, 6,
+                    "Target", "Town 1");
+        TPPackage secondPackage = new TPPackage("Charmin",
+                    TPPackage.Style.STRONG, 3, 9, 8,
+                    "Target", "Town 2");
+        packageOrganizer.addPackage(firstPackage);
+        packageOrganizer.addPackage(secondPackage);
+
+
     }
 
     /**

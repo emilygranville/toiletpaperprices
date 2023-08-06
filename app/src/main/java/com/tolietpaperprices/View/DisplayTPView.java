@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class DisplayTPView extends Fragment implements IDisplayTPView {
 
+    public static final String LIST_OF_PACKAGES_S = "list of packages";
     FragmentDisplayTpBinding binding;
     List<TPPackage> displayPackageList;
 
@@ -41,15 +42,15 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle args = this.getArguments();
-
         if (args != null) {
-
+            this.displayPackageList = (List<TPPackage>) args.getSerializable(LIST_OF_PACKAGES_S);
         }
+
         if (this.displayPackageList != null && !this.displayPackageList.isEmpty()) {
             for (TPPackage tpPackages: this.displayPackageList) {
                 //might need to put it in a queue THEN add to binding
                 TextView newPackage = new TextView(this.getContext());
-                newPackage.setText(newPackage.toString());
+                newPackage.setText(tpPackages.toString() + "\n");
                 this.binding.displayViewVerticalLayout.addView(newPackage);
             }
         } else {
