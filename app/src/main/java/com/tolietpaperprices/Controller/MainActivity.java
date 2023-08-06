@@ -14,7 +14,7 @@ import com.tolietpaperprices.View.IMainView;
 import com.tolietpaperprices.View.MainView;
 
 public class MainActivity extends AppCompatActivity implements IMainView.Listener, IAddTPView.Listener {
-    public String TPP = "tpp";
+    public static String TPP = "tpp";
     private IMainView mainView;
     private PackageOrganizer packageOrganizer;
 
