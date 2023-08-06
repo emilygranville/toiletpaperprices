@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
             this.mainView.displayFragment(addPackage, false, "add");
         } else {
             Fragment disaplayPackage = new DisplayTPView(this.packageOrganizer.getListOfPackages());
-            this.mainView.displayFragment(disaplayPackage, false, "display");
+            this.mainView.displayFragment(disaplayPackage, true, "display");
         }
 
         /* test*/
@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void onDisplayMenuButton() {
         Log.i(TPP, "display menu pressed");
+        Fragment disaplayPackage = new DisplayTPView(this.packageOrganizer.getListOfPackages());
+        this.mainView.displayFragment(disaplayPackage, true, "display");
     }
 
     /**
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void onAddMenuButton() {
         Log.i(TPP, "add menu pressed");
+        Fragment addPackage = new AddTPView(this);
+        this.mainView.displayFragment(addPackage, false, "add");
     }
 
     /**
@@ -83,6 +87,6 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         Log.i(TPP, tpPackage.toString());
         packageOrganizer.addPackage(tpPackage);
         Fragment disaplayPackage = new DisplayTPView(this.packageOrganizer.getListOfPackages());
-        this.mainView.displayFragment(disaplayPackage, false, "display");
+        this.mainView.displayFragment(disaplayPackage, true, "display");
     }
 }
