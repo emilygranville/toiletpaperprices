@@ -5,17 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".View.DisplayTPView">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-        android:id="@+id/displayViewVerticalLayout"
+    <ScrollView
+        android:id="@+id/display_scroll_layout"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/displayViewVerticalLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_display_fragment" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </FrameLayout>
