@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.tolietpaperprices.Controller.MainActivity;
@@ -24,7 +26,7 @@ public class AddTPView extends Fragment implements IAddTPView {
 
     FragmentAddTpBinding binding;
     Listener listener;
-    String NOT_CHANGED;
+    TPPackage.Style currentStyle = TPPackage.Style.NORMAL;
 
     public AddTPView(Listener listener) {
         this.listener = listener;
@@ -33,7 +35,6 @@ public class AddTPView extends Fragment implements IAddTPView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         this.binding = FragmentAddTpBinding.inflate(inflater);
         return this.binding.getRoot();
     }
@@ -41,17 +42,27 @@ public class AddTPView extends Fragment implements IAddTPView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        /*
-        NOT_CHANGED = AddTPView.this.binding.priceEditable.getText().toString();
-        Log.i(MainActivity.TPP, "not changed: " + NOT_CHANGED);
 
-         */
+        RadioGroup styleRadioGroup = new RadioGroup(this.getContext());
+        for (TPPackage.Style style : TPPackage.Style.values()) {
+            RadioButton button = new RadioButton(this.getContext());
+            styleRadioGroup.addView(button);
+            button.setText(String.valueOf(style));
+            if (style == TPPackage.Style.NORMAL) {
+                button.toggle();
+            }
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AddTPView.this.currentStyle = TPPackage.Style.valueOf(button.getText().toString());
+                }
+            });
+        }
+        this.binding.styleHlayout.addView(styleRadioGroup);
 
         this.binding.addTpDoneButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                //Log.d(MainActivity.TPP, String.valueOf(AddTPView.this.binding.priceEditable.getText().equals("\n")));
-
                 if (isFilledOut()) {
                     AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage());
                 } else {
@@ -73,7 +84,7 @@ public class AddTPView extends Fragment implements IAddTPView {
     private TPPackage makeNewPackage() {
         return new TPPackage(
                 this.binding.brandNameEditable.getText().toString(),
-                TPPackage.Style.NORMAL,
+                this.currentStyle,
                 Double.parseDouble(this.binding.priceEditable.getText().toString()),
                 Integer.parseInt(this.binding.numRollsEditable.getText().toString()),
                 Integer.parseInt(this.binding.squaresPerRollEditable.getText().toString()),

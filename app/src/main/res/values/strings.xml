@@ -11,6 +11,7 @@
     <!-- Add paper fragment strings -->
     <string name="brand_name_label">Brand name:</string>
     <string name="brand_name_hint">brand name</string>
+    <string name="style_label">Style:</string>
     <string name="price_label">Price:</string>
     <string name="price_hint">29.99</string>
     <string name="num_rolls_label">Number of rolls:</string>
