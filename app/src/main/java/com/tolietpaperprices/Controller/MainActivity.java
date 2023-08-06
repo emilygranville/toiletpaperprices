@@ -16,6 +16,7 @@ import com.tolietpaperprices.View.MainView;
 import android.view.View.OnClickListener;
 
 public class MainActivity extends AppCompatActivity implements IMainView.Listener {
+    public String TPP = "tpp";
     IMainView mainView;
 
         @Override
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void onAboutMenuButton() {
-        Log.i("tpp", "about menu pressed");
+        Log.i(TPP, "about menu pressed");
     }
 
     /**
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void onDisplayMenuButton() {
-        Log.i("tpp", "display menu pressed");
+        Log.i(TPP, "display menu pressed");
     }
 
     /**
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void onAddMenuButton() {
-        Log.i("tpp", "add menu pressed");
+        Log.i(TPP, "add menu pressed");
     }
 
     public String toString() {

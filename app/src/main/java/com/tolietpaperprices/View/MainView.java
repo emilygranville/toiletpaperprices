@@ -14,7 +14,7 @@ import android.view.View.OnClickListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.tolietpaperprices.databinding.ActivityMainBinding;
 
-public class MainView implements IMainView, IMainView.Listener{
+public class MainView implements IMainView {
     FragmentManager fragmentManager;
     ActivityMainBinding binding;
     Listener listener;
@@ -27,7 +27,10 @@ public class MainView implements IMainView, IMainView.Listener{
         this.fragmentManager = activity.getSupportFragmentManager();
         this.binding = ActivityMainBinding.inflate(activity.getLayoutInflater());
         this.listener = (Listener) activity;
+    }
 
+    /*
+    public void onCreate() {
         Button aboutButton = this.binding.aboutMenuButton;
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +56,8 @@ public class MainView implements IMainView, IMainView.Listener{
         });
     }
 
+     */
+
     @Override
     public View getRootView() {
         return this.binding.getRoot();
@@ -66,29 +71,5 @@ public class MainView implements IMainView, IMainView.Listener{
             ft.addToBackStack(name);
         }
         ft.commit();
-    }
-
-    /**
-     * Method to switch to About page
-     */
-    @Override
-    public void onAboutMenuButton() {
-        Log.i("tpp", "about work here?");
-    }
-
-    /**
-     * Method to switch to Display page
-     */
-    @Override
-    public void onDisplayMenuButton() {
-        Log.i("tpp", "display work here?");
-    }
-
-    /**
-     * Method to switch to Add page
-     */
-    @Override
-    public void onAddMenuButton() {
-        Log.i("tpp", "add work here?");
     }
 }
