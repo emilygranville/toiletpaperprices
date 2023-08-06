@@ -43,13 +43,7 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
         Bundle args = this.getArguments();
 
         if (args != null) {
-            /*
-            this.navChapterIndex = new ArrayList<ChapterInfo>();
-            for (Parcelable bundle : args.getParcelableArray(NavigationView.CHAPTER_INDEX_KEY)) {
-                this.navChapterIndex.add(ChapterInfo.fromBundle((Bundle) bundle));
-            }
 
-             */
         }
         if (this.displayPackageList != null && !this.displayPackageList.isEmpty()) {
             for (TPPackage tpPackages: this.displayPackageList) {
