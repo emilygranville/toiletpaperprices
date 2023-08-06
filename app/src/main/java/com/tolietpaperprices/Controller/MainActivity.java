@@ -22,11 +22,9 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     protected void onCreate(Bundle savedInstanceState) {
         getSupportFragmentManager().setFragmentFactory(new TPPFragmentFactory(this));
         super.onCreate(savedInstanceState);
-        //Log.i("tpp", "hello");
+
         this.mainView = new MainView(this);
         setContentView(this.mainView.getRootView());
-
-        //Log.i("tpp", "on create");
 
         this.packageOrganizer = new PackageOrganizer();
 
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
             Fragment addPackage = new AddTPView(this);
             this.mainView.displayFragment(addPackage, false, "add");
         } else {
-            Fragment disaplayPackage = new DisplayTPView();
+            Fragment disaplayPackage = new DisplayTPView(this.packageOrganizer.getListOfPackages());
             this.mainView.displayFragment(disaplayPackage, false, "display");
         }
     }
@@ -63,10 +61,6 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         Log.i(TPP, "add menu pressed");
     }
 
-    public String toString() {
-        return "Main activity";
-    }
-
     /**
      * Creates a new TPPackage based on given info,
      * adds it to the list, and exits page
@@ -76,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         Log.i(TPP, "on add button done: ");
         Log.i(TPP, tpPackage.toString());
         packageOrganizer.addPackage(tpPackage);
-        Fragment disaplayPackage = new DisplayTPView();
-        this.mainView.displayFragment(disaplayPackage, true, "display");
+        Fragment disaplayPackage = new DisplayTPView(this.packageOrganizer.getListOfPackages());
+        this.mainView.displayFragment(disaplayPackage, false, "display");
     }
 }

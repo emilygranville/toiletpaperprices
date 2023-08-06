@@ -15,9 +15,7 @@ import com.tolietpaperprices.R;
 import com.tolietpaperprices.databinding.FragmentAddTpBinding;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddTPView#newInstance} factory method to
- * create an instance of this fragment.
+ * A class for the view to add packages to the list of packages
  */
 public class AddTPView extends Fragment implements IAddTPView {
 
