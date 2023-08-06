@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         getSupportFragmentManager().setFragmentFactory(new TPPFragmentFactory(this));
         super.onCreate(savedInstanceState);
 
-        this.mainView = new MainView(this);
+        this.mainView = new MainView(this,this);
         setContentView(this.mainView.getRootView());
 
         this.packageOrganizer = new PackageOrganizer();

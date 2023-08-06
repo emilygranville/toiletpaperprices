@@ -23,14 +23,11 @@ public class MainView implements IMainView {
      * MainView constructor
      * @param activity android activity
      */
-    public MainView(/*Listener listener,*/ FragmentActivity activity) {
+    public MainView(Listener listener, FragmentActivity activity) {
         this.fragmentManager = activity.getSupportFragmentManager();
         this.binding = ActivityMainBinding.inflate(activity.getLayoutInflater());
-        this.listener = (Listener) activity;
-    }
+        this.listener = listener;
 
-    /*
-    public void onCreate() {
         Button aboutButton = this.binding.aboutMenuButton;
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,8 +52,6 @@ public class MainView implements IMainView {
             }
         });
     }
-
-     */
 
     @Override
     public View getRootView() {
