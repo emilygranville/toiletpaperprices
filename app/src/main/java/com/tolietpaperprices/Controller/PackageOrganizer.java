@@ -14,7 +14,7 @@ import java.util.List;
  * @author Emily
  */
 public class PackageOrganizer implements Serializable {
-    private List<TPPackage> listOfPackages;
+    public List<TPPackage> listOfPackages;
 
     /**
      * Default constructor of PackageOrganizer
