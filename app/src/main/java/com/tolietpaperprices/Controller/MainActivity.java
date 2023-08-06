@@ -75,5 +75,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     public void onTPAddDoneButton(TPPackage tpPackage) {
         Log.i(TPP, "on add button done: ");
         Log.i(TPP, tpPackage.toString());
+        packageOrganizer.addPackage(tpPackage);
+        Fragment disaplayPackage = new DisplayTPView();
+        this.mainView.displayFragment(disaplayPackage, true, "display");
     }
 }
