@@ -6,16 +6,12 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.tolietpaperprices.R;
+import com.tolietpaperprices.Model.TPPackage;
 import com.tolietpaperprices.View.AddTPView;
 import com.tolietpaperprices.View.DisplayTPView;
 import com.tolietpaperprices.View.IAddTPView;
-import com.tolietpaperprices.View.IDisplayTPView;
 import com.tolietpaperprices.View.IMainView;
 import com.tolietpaperprices.View.MainView;
-
-import android.view.View.OnClickListener;
 
 public class MainActivity extends AppCompatActivity implements IMainView.Listener, IAddTPView.Listener {
     public String TPP = "tpp";
@@ -76,7 +72,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      * adds it to the list, and exits page
      */
     @Override
-    public void onTPAddDoneButton() {
-        Log.i(TPP, "on add button done");
+    public void onTPAddDoneButton(TPPackage tpPackage) {
+        Log.i(TPP, "on add button done: ");
+        Log.i(TPP, tpPackage.toString());
     }
 }

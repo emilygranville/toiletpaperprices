@@ -9,6 +9,20 @@ import java.time.LocalDateTime;
  * @author Emily
  */
 public class TPPackage implements Serializable, Comparable<TPPackage> {
+    @Override
+    public String toString() {
+        return "TPPackage{" +
+                "brand='" + brand + '\'' +
+                ", style=" + style +
+                ", price=" + price +
+                ", numRolls=" + numRolls +
+                ", numSquaresPerRoll=" + numSquaresPerRoll +
+                ", pricePerSquare=" + pricePerSquare +
+                ", storeName='" + storeName + '\'' +
+                ", storeTownName='" + storeTownName + '\'' +
+                ", dateOfEntry=" + dateOfEntry +
+                '}';
+    }
 
     public enum Style{
         SOFT, STRONG, NORMAL

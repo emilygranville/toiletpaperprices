@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tolietpaperprices.Model.TPPackage;
 import com.tolietpaperprices.R;
 import com.tolietpaperprices.databinding.FragmentAddTpBinding;
 
@@ -42,8 +43,30 @@ public class AddTPView extends Fragment implements IAddTPView {
         this.binding.addTpDoneButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                AddTPView.this.listener.onTPAddDoneButton();
+                if (isFilledOut()) {
+                    AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage());
+                }
             }
         });
+    }
+
+    private boolean isFilledOut() {
+        return !this.binding.brandNameEditable.getText().equals("") &&
+                !this.binding.priceEditable.getText().equals("") &&
+                !this.binding.numRollsEditable.getText().equals("") &&
+                !this.binding.squaresPerRollEditable.getText().equals("") &&
+                !this.binding.storeNameEditable.getText().equals("") &&
+                !this.binding.storeTownNameEditable.getText().equals("");
+    }
+
+    private TPPackage makeNewPackage() {
+        return new TPPackage(
+                this.binding.brandNameEditable.getText().toString(),
+                TPPackage.Style.NORMAL,
+                Double.parseDouble(this.binding.priceEditable.getText().toString()),
+                Integer.parseInt(this.binding.numRollsEditable.getText().toString()),
+                Integer.parseInt(this.binding.squaresPerRollEditable.getText().toString()),
+                this.binding.storeNameEditable.getText().toString(),
+                this.binding.storeTownNameEditable.getText().toString());
     }
 }
