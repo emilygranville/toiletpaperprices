@@ -126,5 +126,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void deletePackageButton(int index) {
         Log.i(TPP, "hi delete! index: " + String.valueOf(index));
+        this.packageOrganizer.deletePackage(index);
+        Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
+        this.mainView.displayFragment(disaplayPackage, true, "display");
     }
 }
