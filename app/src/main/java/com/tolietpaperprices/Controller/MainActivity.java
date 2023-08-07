@@ -95,10 +95,14 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      * adds it to the list, and exits page
      */
     @Override
-    public void onTPAddDoneButton(TPPackage tpPackage) {
+    public void onTPAddDoneButton(TPPackage tpPackage, boolean isEditedPackage, int index) {
         Log.i(TPP, "on add button done: ");
         Log.i(TPP, tpPackage.toString());
-        packageOrganizer.addPackage(tpPackage);
+        if (isEditedPackage) {
+            this.packageOrganizer.editPackage(tpPackage, index);
+        } else {
+            this.packageOrganizer.addPackage(tpPackage);
+        }
         Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
         this.mainView.displayFragment(disaplayPackage, true, "display");
     }
@@ -110,6 +114,9 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void editPackageButton(int index) {
         Log.i(TPP, "hi edit! index: " + String.valueOf(index));
+        Fragment editPackage = new AddTPView(this,
+                this.packageOrganizer.getListOfPackages().get(index), index);
+        this.mainView.displayFragment(editPackage, false, "add");
     }
 
     /**

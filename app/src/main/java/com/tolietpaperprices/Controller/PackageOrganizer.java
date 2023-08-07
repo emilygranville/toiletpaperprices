@@ -57,8 +57,12 @@ public class PackageOrganizer implements Serializable {
      * @param index
      */
     public void editPackage(TPPackage newPackage, int index) {
-        listOfPackages.remove(index);
-        listOfPackages.set(index, newPackage);
+        this.listOfPackages.remove(index);
+        if (this.listOfPackages.isEmpty()) {
+            this.listOfPackages.add(newPackage);
+        } else {
+            this.listOfPackages.set(index, newPackage);
+        }
     }
 
     /**

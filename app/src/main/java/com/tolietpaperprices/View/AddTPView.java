@@ -26,16 +26,32 @@ import com.tolietpaperprices.databinding.FragmentAddTpBinding;
  */
 public class AddTPView extends Fragment implements IAddTPView {
 
-    FragmentAddTpBinding binding;
-    Listener listener;
     TPPackage.Style currentStyle = TPPackage.Style.NORMAL;
 
+    FragmentAddTpBinding binding;
+
+    Listener listener;
+    TPPackage tpPackage;
+    int index;
+
     /**
-     * Constructor for add view
+     * Main constructor for add view
      * @param listener listens for done button
      */
     public AddTPView(Listener listener) {
         this.listener = listener;
+        this.index = -1;
+    }
+
+    /**
+     * Secondary constructor for add view when editing packages
+     * @param listener listens for done button
+     * @param tpPackage package information provided
+     */
+    public AddTPView(Listener listener, TPPackage tpPackage, int index) {
+        this.listener = listener;
+        this.tpPackage = tpPackage;
+        this.index = index;
     }
 
     /**
@@ -72,8 +88,14 @@ public class AddTPView extends Fragment implements IAddTPView {
             RadioButton button = new RadioButton(this.getContext());
             styleRadioGroup.addView(button);
             button.setText(String.valueOf(style));
-            if (style == TPPackage.Style.NORMAL) {
-                button.toggle();
+            if (this.tpPackage != null) {
+                if (style == tpPackage.getStyle()) {
+                    button.toggle();
+                }
+            } else {
+                if (style == TPPackage.Style.NORMAL) {
+                    button.toggle();
+                }
             }
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,16 +106,33 @@ public class AddTPView extends Fragment implements IAddTPView {
         }
         this.binding.styleHlayout.addView(styleRadioGroup);
 
+        if (this.tpPackage != null) {
+            enterInfo();
+        }
+
         this.binding.addTpDoneButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 if (isFilledOut()) {
-                    AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage());
+                    boolean isEditedPackage = tpPackage != null;
+                    AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage(), isEditedPackage, AddTPView.this.index);
                 } else {
                     Snackbar.make(view, AddTPView.this.getContext().getResources().getString(R.string.not_filled_correctly_label), Snackbar.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    /**
+     * Adds information of package to form for editing
+     */
+    private void enterInfo() {
+        this.binding.brandNameEditable.setText(this.tpPackage.getBrand());
+        this.binding.priceEditable.setText(String.valueOf(this.tpPackage.getPrice()));
+        this.binding.numRollsEditable.setText(String.valueOf(this.tpPackage.getNumRolls()));
+        this.binding.squaresPerRollEditable.setText(String.valueOf(this.tpPackage.getNumSquaresPerRoll()));
+        this.binding.storeNameEditable.setText(this.tpPackage.getStoreName());
+        this.binding.storeTownNameEditable.setText(this.tpPackage.getStoreTownName());
     }
 
     /**

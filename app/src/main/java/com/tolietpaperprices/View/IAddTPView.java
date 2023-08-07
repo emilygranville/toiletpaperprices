@@ -18,6 +18,6 @@ public interface IAddTPView {
          * Creates a new TPPackage based on given info,
          * adds it to the list, and exits page
          */
-        public void onTPAddDoneButton(TPPackage tpPackage);
+        public void onTPAddDoneButton(TPPackage tpPackage, boolean isEditedPackage, int index);
     }
 }
