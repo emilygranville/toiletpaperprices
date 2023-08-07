@@ -23,8 +23,10 @@
     <string name="store_town_name_label">Town of store</string>
     <string name="store_town_name_hint">store town name</string>
     <string name="add_tp_done_button_label">DONE</string>
+    <string name="not_filled_correctly_label">Make sure to enter information in all all fields</string>
 
     <!-- Display paper fragment strings -->
     <string name="edit_button_label">Edit</string>
     <string name="delete_button_label">Delete</string>
+    <string name="no_packages_label">No packages of toilet paper to compare</string>
 </resources>

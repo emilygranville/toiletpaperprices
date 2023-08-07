@@ -90,7 +90,7 @@ public class AddTPView extends Fragment implements IAddTPView {
                 if (isFilledOut()) {
                     AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage());
                 } else {
-                    Snackbar.make(view, "Make sure to enter information in all all fields", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, AddTPView.this.getContext().getResources().getString(R.string.not_filled_correctly_label), Snackbar.LENGTH_LONG).show();
                 }
             }
         });

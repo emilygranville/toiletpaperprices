@@ -122,7 +122,7 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
             }
         } else {
             TextView defaultMessage = new TextView(this.getContext());
-            defaultMessage.setText("No packages of toiletpaper to compare!");
+            defaultMessage.setText(this.getContext().getResources().getString(R.string.no_packages_label));
             this.binding.displayViewVerticalLayout.addView(defaultMessage);
         }
     }
