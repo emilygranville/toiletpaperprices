@@ -46,20 +46,6 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
             Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
             this.mainView.displayFragment(disaplayPackage, false, "display");
         }
-
-        /* test
-        TPPackage firstPackage = new TPPackage("Charmin",
-                    TPPackage.Style.SOFT, 5, 10, 6,
-                    "Target", "Town 1");
-        TPPackage secondPackage = new TPPackage("Charmin",
-                    TPPackage.Style.STRONG, 3, 9, 8,
-                    "Target", "Town 2");
-        packageOrganizer.addPackage(firstPackage);
-        packageOrganizer.addPackage(secondPackage);
-        
-         */
-
-
     }
 
     /**
@@ -75,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void onDisplayMenuButton() {
-        Log.i(TPP, "display menu pressed");
         Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
         this.mainView.displayFragment(disaplayPackage, false, "display");
     }
@@ -85,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void onAddMenuButton() {
-        Log.i(TPP, "add menu pressed");
         Fragment addPackage = new AddTPView(this);
         this.mainView.displayFragment(addPackage, true, "add");
     }
@@ -96,8 +80,6 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void onTPAddDoneButton(TPPackage tpPackage, boolean isEditedPackage, int index) {
-        Log.i(TPP, "on add button done: ");
-        Log.i(TPP, tpPackage.toString());
         if (isEditedPackage) {
             this.packageOrganizer.editPackage(tpPackage, index);
         } else {
@@ -113,7 +95,6 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void editPackageButton(int index) {
-        Log.i(TPP, "hi edit! index: " + String.valueOf(index));
         Fragment editPackage = new AddTPView(this,
                 this.packageOrganizer.getListOfPackages().get(index), index);
         this.mainView.displayFragment(editPackage, false, "add");
@@ -125,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void deletePackageButton(int index) {
-        Log.i(TPP, "hi delete! index: " + String.valueOf(index));
         this.packageOrganizer.deletePackage(index);
         Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
         this.mainView.displayFragment(disaplayPackage, true, "display");
