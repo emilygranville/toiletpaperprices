@@ -22,6 +22,8 @@ import java.util.List;
 
 /**
  * A class for the view of displaying packages
+ *
+ * @author Emily
  */
 public class DisplayTPView extends Fragment implements IDisplayTPView {
 
@@ -30,11 +32,28 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
     Listener listener;
     List<TPPackage> displayPackageList;
 
+    /**
+     * Constructor for display view
+     * @param listener listens for edit and delete buttons
+     * @param displayPackageList list of packages
+     */
     public DisplayTPView(Listener listener, List<TPPackage> displayPackageList) {
         this.listener = listener;
         this.displayPackageList = displayPackageList;
     }
 
+    /**
+     * Sets up the fragment
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,6 +61,12 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
         return this.binding.getRoot();
     }
 
+    /**
+     * Displays the fragment
+     * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

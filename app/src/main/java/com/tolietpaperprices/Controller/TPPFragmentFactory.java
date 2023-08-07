@@ -7,14 +7,29 @@ import androidx.fragment.app.FragmentFactory;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Fragment factory for fragment classes
+ *
+ * @author Emily
+ */
 public class TPPFragmentFactory extends FragmentFactory {
     private static final String PACKAGE_NAME = "com.tolietpaperprices.View";
     private final MainActivity controller;
 
+    /**
+     * Constructor
+     * @param controller
+     */
     public TPPFragmentFactory(MainActivity controller) {
         this.controller = controller;
     }
 
+    /**
+     * Makes instances of the fragments
+     * @param classLoader The default classloader to use for instantiation
+     * @param className The class name of the fragment to instantiate.
+     * @return
+     */
     @NonNull
     @Override
     public Fragment instantiate(@NonNull ClassLoader classLoader, @NonNull String className) {

@@ -9,15 +9,10 @@ import java.time.LocalDateTime;
  * @author Emily
  */
 public class TPPackage implements Serializable, Comparable<TPPackage> {
-    @Override
-    public String toString() {
-        return String.format("Brand: %s, Style: %s, Price: $%.2f, Num Rolls: %d, Squares: %d, " +
-                "Price per square: $%f, Store: %s, Town: %s, Date: %s",
-                this.brand, this.style.toString(), this.price, this.numRolls,
-                this.numSquaresPerRoll, this.pricePerSquare, this.storeName,
-                this.storeTownName, this.dateOfEntry.toString());
-    }
 
+    /**
+     * Enum for the different toilet paper styles
+     */
     public enum Style{
         SOFT, STRONG, NORMAL
     }
@@ -147,5 +142,18 @@ public class TPPackage implements Serializable, Comparable<TPPackage> {
             return -1;
         }
         return 0;
+    }
+
+    /**
+     * Makes a string of the class
+     * @return
+     */
+    @Override
+    public String toString() {
+        return String.format("Brand: %s, Style: %s, Price: $%.2f, Num Rolls: %d, Squares: %d, " +
+                        "Price per square: $%f, Store: %s, Town: %s, Date: %s",
+                this.brand, this.style.toString(), this.price, this.numRolls,
+                this.numSquaresPerRoll, this.pricePerSquare, this.storeName,
+                this.storeTownName, this.dateOfEntry.toString());
     }
 }

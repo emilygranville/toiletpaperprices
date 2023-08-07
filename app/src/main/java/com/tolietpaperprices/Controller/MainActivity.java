@@ -14,11 +14,21 @@ import com.tolietpaperprices.View.IDisplayTPView;
 import com.tolietpaperprices.View.IMainView;
 import com.tolietpaperprices.View.MainView;
 
+/**
+ * Controller for the app
+ * Acts as a bridge between the list and the infromation and the display
+ *
+ * @author Emily
+ */
 public class MainActivity extends AppCompatActivity implements IMainView.Listener, IAddTPView.Listener, IDisplayTPView.Listener {
     public static String TPP = "tpp";
     private IMainView mainView;
     private PackageOrganizer packageOrganizer;
 
+    /**
+     * Sets up the app
+     * @param savedInstanceState
+     */
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportFragmentManager().setFragmentFactory(new TPPFragmentFactory(this));
@@ -93,11 +103,19 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         this.mainView.displayFragment(disaplayPackage, true, "display");
     }
 
+    /**
+     * Functionality for editing package information
+     * @param index
+     */
     @Override
     public void editPackageButton(int index) {
         Log.i(TPP, "hi edit! index: " + String.valueOf(index));
     }
 
+    /**
+     * Functionality for deleting a package
+     * @param index
+     */
     @Override
     public void deletePackageButton(int index) {
         Log.i(TPP, "hi delete! index: " + String.valueOf(index));

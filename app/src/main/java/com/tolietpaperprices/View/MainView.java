@@ -14,6 +14,11 @@ import android.view.View.OnClickListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.tolietpaperprices.databinding.ActivityMainBinding;
 
+/**
+ * Class for the main view (primarily menu)
+ *
+ * @author Emily
+ */
 public class MainView implements IMainView {
     FragmentManager fragmentManager;
     ActivityMainBinding binding;
@@ -53,11 +58,20 @@ public class MainView implements IMainView {
         });
     }
 
+    /**
+     * Returns highest root view of the screen
+     */
     @Override
     public View getRootView() {
         return this.binding.getRoot();
     }
 
+    /**
+     * Displays the fragment
+     * @param fragment
+     * @param allowBack whether back button can return to fragment
+     * @param name
+     */
     @Override
     public void displayFragment(Fragment fragment, boolean allowBack, String name) {
         FragmentTransaction ft = this.fragmentManager.beginTransaction();

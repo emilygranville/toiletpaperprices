@@ -21,6 +21,8 @@ import com.tolietpaperprices.databinding.FragmentAddTpBinding;
 
 /**
  * A class for the view to add packages to the list of packages
+ *
+ * @author Emilly
  */
 public class AddTPView extends Fragment implements IAddTPView {
 
@@ -28,10 +30,26 @@ public class AddTPView extends Fragment implements IAddTPView {
     Listener listener;
     TPPackage.Style currentStyle = TPPackage.Style.NORMAL;
 
+    /**
+     * Constructor for add view
+     * @param listener listens for done button
+     */
     public AddTPView(Listener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Sets up the fragment
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,6 +57,12 @@ public class AddTPView extends Fragment implements IAddTPView {
         return this.binding.getRoot();
     }
 
+    /**
+     * Displays the fragment
+     * @param view The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -72,6 +96,9 @@ public class AddTPView extends Fragment implements IAddTPView {
         });
     }
 
+    /**
+     * Checks whether the form is completely filled out
+     */
     private boolean isFilledOut() {
         return !this.binding.brandNameEditable.getText().toString().equals("") &&
                 !this.binding.priceEditable.getText().toString().equals("") &&
@@ -81,6 +108,9 @@ public class AddTPView extends Fragment implements IAddTPView {
                 !this.binding.storeTownNameEditable.getText().toString().equals("");
     }
 
+    /**
+     * Creates a new package based on given information
+     */
     private TPPackage makeNewPackage() {
         return new TPPackage(
                 this.binding.brandNameEditable.getText().toString(),
