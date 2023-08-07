@@ -61,7 +61,7 @@ public class PackageOrganizer implements Serializable {
         if (this.listOfPackages.isEmpty()) {
             this.listOfPackages.add(newPackage);
         } else {
-            this.listOfPackages.set(index, newPackage);
+            addPackage(newPackage);
         }
     }
 
