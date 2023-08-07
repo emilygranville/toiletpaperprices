@@ -18,6 +18,7 @@ import com.tolietpaperprices.Model.TPPackage;
 import com.tolietpaperprices.R;
 import com.tolietpaperprices.databinding.FragmentDisplayTpBinding;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ import java.util.List;
  */
 public class DisplayTPView extends Fragment implements IDisplayTPView {
 
-    public static final String LIST_OF_PACKAGES_S = "list of packages";
+    public static final String LIST_OF_PACKAGES_KEY = "list of packages key";
     FragmentDisplayTpBinding binding;
     Listener listener;
     List<TPPackage> displayPackageList;
@@ -40,6 +41,10 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
     public DisplayTPView(Listener listener, List<TPPackage> displayPackageList) {
         this.listener = listener;
         this.displayPackageList = displayPackageList;
+    }
+
+    public DisplayTPView(Listener listener) {
+        this.listener = listener;
     }
 
     /**
@@ -73,9 +78,41 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
 
         Bundle args = this.getArguments();
         if (args != null) {
-            this.displayPackageList = (List<TPPackage>) args.getSerializable(LIST_OF_PACKAGES_S);
+            this.displayPackageList = (List<TPPackage>) args.getSerializable(LIST_OF_PACKAGES_KEY);
         }
 
+        this.displayList();
+    }
+
+    /**
+     * Saves information when resource constraints are destoryed
+     * @param outState Bundle in which to place your saved state.
+     */
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        
+        outState.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.displayPackageList);
+    }
+
+    /**
+     * Restores instance when it was destroyed
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            this.displayPackageList = (List<TPPackage>) savedInstanceState.getSerializable(LIST_OF_PACKAGES_KEY);
+        }
+    }
+
+    /**
+     * Adds information to display
+     */
+    private void displayList() {
         if (this.displayPackageList != null && !this.displayPackageList.isEmpty()) {
             for (int i = 0; i < this.displayPackageList.size(); i++) {
 
@@ -84,7 +121,6 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
                 LinearLayout innerVertical = new LinearLayout(this.getContext());
                 innerVertical.setOrientation(LinearLayout.VERTICAL);
 
-                //might need to put it in a queue THEN add to binding
                 TextView newPackage = new TextView(this.getContext());
                 newPackage.setText(tpPackage.toString() + "\n");
                 innerVertical.addView(newPackage);

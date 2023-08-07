@@ -1,9 +1,12 @@
 package com.tolietpaperprices.Controller;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 
 import com.tolietpaperprices.Model.TPPackage;
@@ -14,6 +17,8 @@ import com.tolietpaperprices.View.IDisplayTPView;
 import com.tolietpaperprices.View.IMainView;
 import com.tolietpaperprices.View.MainView;
 
+import java.io.Serializable;
+
 /**
  * Controller for the app
  * Acts as a bridge between the list and the infromation and the display
@@ -21,6 +26,8 @@ import com.tolietpaperprices.View.MainView;
  * @author Emily
  */
 public class MainActivity extends AppCompatActivity implements IMainView.Listener, IAddTPView.Listener, IDisplayTPView.Listener {
+    public static final String IN_PROGRESS = "in progress";
+    public static final String LIST_OF_PACKAGES_KEY = "list of packages key";
     public static String TPP = "tpp";
     private IMainView mainView;
     private PackageOrganizer packageOrganizer;
@@ -39,13 +46,39 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
 
         this.packageOrganizer = new PackageOrganizer();
 
-        if (this.packageOrganizer.getListOfPackages() == null || this.packageOrganizer.getListOfPackages().isEmpty()) {
-            Fragment addPackage = new AddTPView(this);
-            this.mainView.displayFragment(addPackage, false, "add");
-        } else {
-            Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
-            this.mainView.displayFragment(disaplayPackage, false, "display");
+        if (savedInstanceState == null) {
+            if (this.packageOrganizer.getListOfPackages() == null || this.packageOrganizer.getListOfPackages().isEmpty()) {
+                Fragment addPackage = new AddTPView(this);
+                this.mainView.displayFragment(addPackage, false, "add");
+            } else {
+                Bundle fragArgs = new Bundle();
+                fragArgs.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+                Fragment displayPackage = new DisplayTPView(this);
+                displayPackage.setArguments(fragArgs);
+                this.mainView.displayFragment(displayPackage, false, "display");
+            }
         }
+    }
+
+    /**
+     * Saves in progress when resource constraints are destroyed
+     * @param outState
+     * @param outPersistentState
+     */
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putBoolean(IN_PROGRESS, true);
+    }
+
+    /**
+     * Restores instance when it was destroyed
+     * @param savedInstanceState
+     * @param persistentState
+     */
+    @Override
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
     }
 
     /**
@@ -61,8 +94,11 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void onDisplayMenuButton() {
-        Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
-        this.mainView.displayFragment(disaplayPackage, false, "display");
+        Bundle fragArgs = new Bundle();
+        fragArgs.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+        Fragment displayPackage = new DisplayTPView(this);
+        displayPackage.setArguments(fragArgs);
+        this.mainView.displayFragment(displayPackage, false, "display");
     }
 
     /**
@@ -85,8 +121,12 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         } else {
             this.packageOrganizer.addPackage(tpPackage);
         }
-        Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
-        this.mainView.displayFragment(disaplayPackage, true, "display");
+
+        Bundle fragArgs = new Bundle();
+        fragArgs.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+        Fragment displayPackage = new DisplayTPView(this);
+        displayPackage.setArguments(fragArgs);
+        this.mainView.displayFragment(displayPackage, true, "display");
     }
 
     /**
@@ -95,9 +135,9 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void editPackageButton(int index) {
-        Fragment editPackage = new AddTPView(this,
+        Fragment addPackage = new AddTPView(this,
                 this.packageOrganizer.getListOfPackages().get(index), index);
-        this.mainView.displayFragment(editPackage, false, "add");
+        this.mainView.displayFragment(addPackage, false, "add");
     }
 
     /**
@@ -107,7 +147,10 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void deletePackageButton(int index) {
         this.packageOrganizer.deletePackage(index);
-        Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
-        this.mainView.displayFragment(disaplayPackage, true, "display");
+        Bundle fragArgs = new Bundle();
+        fragArgs.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+        Fragment displayPackage = new DisplayTPView(this);
+        displayPackage.setArguments(fragArgs);
+        this.mainView.displayFragment(displayPackage, true, "display");
     }
 }

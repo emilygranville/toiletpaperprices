@@ -1,5 +1,7 @@
 package com.tolietpaperprices.Controller;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentFactory;
@@ -39,8 +41,12 @@ public class TPPFragmentFactory extends FragmentFactory {
         if (fragmentClass.getPackage().getName().equals(PACKAGE_NAME)) {
             try {
                 Constructor<?>[] constructors = fragmentClass.getConstructors();
+                assert constructors.length > 0 : "Fragment class does not have a constructor";
                 return (Fragment) constructors[0].newInstance(controller);
             } catch (InvocationTargetException | IllegalAccessException | InstantiationException e) {
+                final String emsg = String.format("Can't instantiate %s: ensure it's concrete and " +
+                        "has a public constructor with a ControllerActivity-compatible parameter", fragmentClass);
+                Log.e(MainActivity.TPP, emsg);
                 e.printStackTrace();
             }
         }
