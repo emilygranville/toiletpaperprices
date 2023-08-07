@@ -10,10 +10,11 @@ import com.tolietpaperprices.Model.TPPackage;
 import com.tolietpaperprices.View.AddTPView;
 import com.tolietpaperprices.View.DisplayTPView;
 import com.tolietpaperprices.View.IAddTPView;
+import com.tolietpaperprices.View.IDisplayTPView;
 import com.tolietpaperprices.View.IMainView;
 import com.tolietpaperprices.View.MainView;
 
-public class MainActivity extends AppCompatActivity implements IMainView.Listener, IAddTPView.Listener {
+public class MainActivity extends AppCompatActivity implements IMainView.Listener, IAddTPView.Listener, IDisplayTPView.Listener {
     public static String TPP = "tpp";
     private IMainView mainView;
     private PackageOrganizer packageOrganizer;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
             Fragment addPackage = new AddTPView(this);
             this.mainView.displayFragment(addPackage, false, "add");
         } else {
-            Fragment disaplayPackage = new DisplayTPView(this.packageOrganizer.getListOfPackages());
+            Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
             this.mainView.displayFragment(disaplayPackage, false, "display");
         }
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void onDisplayMenuButton() {
         Log.i(TPP, "display menu pressed");
-        Fragment disaplayPackage = new DisplayTPView(this.packageOrganizer.getListOfPackages());
+        Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
         this.mainView.displayFragment(disaplayPackage, false, "display");
     }
 
@@ -88,7 +89,17 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         Log.i(TPP, "on add button done: ");
         Log.i(TPP, tpPackage.toString());
         packageOrganizer.addPackage(tpPackage);
-        Fragment disaplayPackage = new DisplayTPView(this.packageOrganizer.getListOfPackages());
+        Fragment disaplayPackage = new DisplayTPView(this, this.packageOrganizer.getListOfPackages());
         this.mainView.displayFragment(disaplayPackage, true, "display");
+    }
+
+    @Override
+    public void editPackageButton(int index) {
+        Log.i(TPP, "hi edit! index: " + String.valueOf(index));
+    }
+
+    @Override
+    public void deletePackageButton(int index) {
+        Log.i(TPP, "hi delete! index: " + String.valueOf(index));
     }
 }

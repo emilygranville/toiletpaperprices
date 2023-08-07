@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tolietpaperprices.Model.TPPackage;
@@ -24,9 +27,11 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
 
     public static final String LIST_OF_PACKAGES_S = "list of packages";
     FragmentDisplayTpBinding binding;
+    Listener listener;
     List<TPPackage> displayPackageList;
 
-    public DisplayTPView(List<TPPackage> displayPackageList) {
+    public DisplayTPView(Listener listener, List<TPPackage> displayPackageList) {
+        this.listener = listener;
         this.displayPackageList = displayPackageList;
     }
 
@@ -47,11 +52,48 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
         }
 
         if (this.displayPackageList != null && !this.displayPackageList.isEmpty()) {
-            for (TPPackage tpPackages: this.displayPackageList) {
+            for (int i = 0; i < this.displayPackageList.size(); i++) {
+
+                TPPackage tpPackage = this.displayPackageList.get(i);
+
+                LinearLayout innerVertical = new LinearLayout(this.getContext());
+                innerVertical.setOrientation(LinearLayout.VERTICAL);
+
                 //might need to put it in a queue THEN add to binding
                 TextView newPackage = new TextView(this.getContext());
-                newPackage.setText(tpPackages.toString() + "\n");
-                this.binding.displayViewVerticalLayout.addView(newPackage);
+                newPackage.setText(tpPackage.toString() + "\n");
+                innerVertical.addView(newPackage);
+
+                LinearLayout innerHorizontal = new LinearLayout(this.getContext());
+                innerHorizontal.setOrientation(LinearLayout.HORIZONTAL);
+                innerHorizontal.setMinimumWidth(FrameLayout.LayoutParams.MATCH_PARENT);
+
+                Button editButton = new Button(this.getContext());
+                editButton.setId(i);
+                editButton.setText(this.getContext().getResources().getString(R.string.edit_button_label));
+                editButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DisplayTPView.this.listener.editPackageButton(editButton.getId());
+                    }
+                });
+                editButton.setMinimumWidth(FrameLayout.LayoutParams.MATCH_PARENT);
+                innerHorizontal.addView(editButton);
+
+                Button deleteButton = new Button(this.getContext());
+                deleteButton.setId(i);
+                deleteButton.setText(this.getContext().getResources().getString(R.string.delete_button_label));
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DisplayTPView.this.listener.deletePackageButton(deleteButton.getId());
+                    }
+                });
+                deleteButton.setMinimumWidth(FrameLayout.LayoutParams.MATCH_PARENT);
+                innerHorizontal.addView(deleteButton);
+
+                innerVertical.addView(innerHorizontal);
+                this.binding.displayViewVerticalLayout.addView(innerVertical);
             }
         } else {
             TextView defaultMessage = new TextView(this.getContext());

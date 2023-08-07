@@ -23,4 +23,8 @@
     <string name="store_town_name_label">Town of store</string>
     <string name="store_town_name_hint">store town name</string>
     <string name="add_tp_done_button_label">DONE</string>
+
+    <!-- Display paper fragment strings -->
+    <string name="edit_button_label">Edit</string>
+    <string name="delete_button_label">Delete</string>
 </resources>
