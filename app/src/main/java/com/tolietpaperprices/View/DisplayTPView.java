@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.tolietpaperprices.Controller.MainActivity;
 import com.tolietpaperprices.Model.TPPackage;
 import com.tolietpaperprices.R;
 import com.tolietpaperprices.databinding.FragmentDisplayTpBinding;
@@ -28,7 +29,6 @@ import java.util.List;
  */
 public class DisplayTPView extends Fragment implements IDisplayTPView {
 
-    public static final String LIST_OF_PACKAGES_KEY = "list of packages key";
     FragmentDisplayTpBinding binding;
     Listener listener;
     List<TPPackage> displayPackageList;
@@ -78,7 +78,7 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
 
         Bundle args = this.getArguments();
         if (args != null) {
-            this.displayPackageList = (List<TPPackage>) args.getSerializable(LIST_OF_PACKAGES_KEY);
+            this.displayPackageList = (List<TPPackage>) args.getSerializable(MainActivity.LIST_OF_PACKAGES_KEY);
         }
 
         this.displayList();
@@ -92,7 +92,7 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         
-        outState.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.displayPackageList);
+        outState.putSerializable(MainActivity.LIST_OF_PACKAGES_KEY, (Serializable) this.displayPackageList);
     }
 
     /**
@@ -105,7 +105,7 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
         super.onViewStateRestored(savedInstanceState);
 
         if (savedInstanceState != null) {
-            this.displayPackageList = (List<TPPackage>) savedInstanceState.getSerializable(LIST_OF_PACKAGES_KEY);
+            this.displayPackageList = (List<TPPackage>) savedInstanceState.getSerializable(MainActivity.LIST_OF_PACKAGES_KEY);
         }
     }
 
