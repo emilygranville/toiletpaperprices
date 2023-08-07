@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
             this.mainView.displayFragment(disaplayPackage, false, "display");
         }
 
-        /* test*/
+        /* test
         TPPackage firstPackage = new TPPackage("Charmin",
                     TPPackage.Style.SOFT, 5, 10, 6,
                     "Target", "Town 1");
@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
                     "Target", "Town 2");
         packageOrganizer.addPackage(firstPackage);
         packageOrganizer.addPackage(secondPackage);
+        
+         */
 
 
     }
