@@ -1,4 +1,4 @@
-package com.tolietpaperprices.Controller;
+package com.tolietpaperprices.Model;
 
 import com.tolietpaperprices.Model.TPPackage;
 

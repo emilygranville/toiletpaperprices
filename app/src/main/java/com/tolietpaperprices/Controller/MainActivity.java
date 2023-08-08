@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.tolietpaperprices.Model.PackageOrganizer;
 import com.tolietpaperprices.Model.TPPackage;
 import com.tolietpaperprices.View.AddTPView;
 import com.tolietpaperprices.View.DisplayTPView;
@@ -41,14 +42,15 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         getSupportFragmentManager().setFragmentFactory(new TPPFragmentFactory(this));
         super.onCreate(savedInstanceState);
 
+        IDataPreservation loadData = new LocalDataPreservation();
+        this.packageOrganizer = loadData.loadPackageOrganizer(this);
+
         if (savedInstanceState != null) {
             this.packageOrganizer = (PackageOrganizer) savedInstanceState.getSerializable(PACKAGE_ORGANIZER_KEY);
         }
 
         this.mainView = new MainView(this,this);
         setContentView(this.mainView.getRootView());
-
-        this.packageOrganizer = new PackageOrganizer();
 
         if (savedInstanceState == null) {
             if (this.packageOrganizer.getListOfPackages() == null || this.packageOrganizer.getListOfPackages().isEmpty()) {
@@ -130,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
             this.packageOrganizer.addPackage(tpPackage);
         }
 
+        IDataPreservation saveData = new LocalDataPreservation();
+        saveData.savePackageOrganizer(this, this.packageOrganizer);
+
         Bundle fragArgs = new Bundle();
         fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
         Fragment displayPackage = new DisplayTPView(this);
@@ -158,6 +163,10 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void deletePackageButton(int index) {
         this.packageOrganizer.deletePackage(index);
+
+        IDataPreservation saveData = new LocalDataPreservation();
+        saveData.savePackageOrganizer(this, this.packageOrganizer);
+
         Bundle fragArgs = new Bundle();
         fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
         Fragment displayPackage = new DisplayTPView(this);

@@ -2,6 +2,7 @@ package com.tolietpaperprices.Controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.tolietpaperprices.Model.PackageOrganizer;
 import com.tolietpaperprices.Model.TPPackage;
 
 import org.junit.jupiter.api.Test;
