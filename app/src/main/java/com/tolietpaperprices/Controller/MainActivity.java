@@ -10,8 +10,10 @@ import android.util.Log;
 
 import com.tolietpaperprices.Model.PackageOrganizer;
 import com.tolietpaperprices.Model.TPPackage;
+import com.tolietpaperprices.View.AboutPageView;
 import com.tolietpaperprices.View.AddTPView;
 import com.tolietpaperprices.View.DisplayTPView;
+import com.tolietpaperprices.View.IAboutPageView;
 import com.tolietpaperprices.View.IAddTPView;
 import com.tolietpaperprices.View.IDisplayTPView;
 import com.tolietpaperprices.View.IMainView;
@@ -25,7 +27,7 @@ import java.io.Serializable;
  *
  * @author Emily
  */
-public class MainActivity extends AppCompatActivity implements IMainView.Listener, IAddTPView.Listener, IDisplayTPView.Listener {
+public class MainActivity extends AppCompatActivity implements IMainView.Listener, IAddTPView.Listener, IDisplayTPView.Listener, IAboutPageView.Listener {
     public static final String IN_PROGRESS = "in progress";
     public static final String LIST_OF_PACKAGES_KEY = "list of packages key";
     public static final String PACKAGE_ORGANIZER_KEY = "package organizer key";
@@ -97,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void onAboutMenuButton() {
         Log.i(TPP, "about menu pressed");
+        Fragment aboutPage = new AboutPageView(this);
+        this.mainView.displayFragment(aboutPage, true, "about");
     }
 
     /**
