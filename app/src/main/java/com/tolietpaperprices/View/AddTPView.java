@@ -13,10 +13,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.tolietpaperprices.Controller.MainActivity;
 import com.tolietpaperprices.Model.TPPackage;
 import com.tolietpaperprices.R;
 import com.tolietpaperprices.databinding.FragmentAddTpBinding;
+
 
 /**
  * A class for the view to add packages to the list of packages
@@ -25,6 +25,8 @@ import com.tolietpaperprices.databinding.FragmentAddTpBinding;
  */
 public class AddTPView extends Fragment implements IAddTPView {
 
+    public static final String PACKAGE_KEY = "package key";
+    public static final String INDEX_KEY = "index key";
     TPPackage.Style currentStyle = TPPackage.Style.NORMAL;
 
     FragmentAddTpBinding binding;
@@ -82,13 +84,19 @@ public class AddTPView extends Fragment implements IAddTPView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle args = this.getArguments();
+        if (args != null) {
+            this.tpPackage = (TPPackage) args.getSerializable(this.PACKAGE_KEY);
+            this.index = args.getInt(INDEX_KEY);
+        }
+
         RadioGroup styleRadioGroup = new RadioGroup(this.getContext());
         for (TPPackage.Style style : TPPackage.Style.values()) {
             RadioButton button = new RadioButton(this.getContext());
             styleRadioGroup.addView(button);
             button.setText(String.valueOf(style));
             if (this.tpPackage != null) {
-                if (style == tpPackage.getStyle()) {
+                if (style == this.tpPackage.getStyle()) {
                     button.toggle();
                 }
             } else {
@@ -113,7 +121,7 @@ public class AddTPView extends Fragment implements IAddTPView {
             @Override
             public void onClick(View view) {
                 if (isFilledOut()) {
-                    boolean isEditedPackage = tpPackage != null;
+                    boolean isEditedPackage = AddTPView.this.tpPackage != null;
                     AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage(), isEditedPackage, AddTPView.this.index);
                 } else {
                     Snackbar.make(view, AddTPView.this.getContext().getResources().getString(R.string.not_filled_correctly_label), Snackbar.LENGTH_LONG).show();
@@ -123,15 +131,54 @@ public class AddTPView extends Fragment implements IAddTPView {
     }
 
     /**
+     * Saves information when resource constraints are destoryed
+     * @param outState Bundle in which to place your saved state.
+     */
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable(this.PACKAGE_KEY, this.tpPackage);
+        outState.putInt(this.INDEX_KEY, this.index);
+    }
+
+
+    /**
+     * Restores instance when it was destroyed
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            this.tpPackage = (TPPackage) savedInstanceState.getSerializable(this.PACKAGE_KEY);
+            this.index = savedInstanceState.getInt(this.INDEX_KEY);
+
+            enterInfo();
+        }
+    }
+
+    /**
      * Adds information of package to form for editing
      */
     private void enterInfo() {
-        this.binding.brandNameEditable.setText(this.tpPackage.getBrand());
-        this.binding.priceEditable.setText(String.valueOf(this.tpPackage.getPrice()));
-        this.binding.numRollsEditable.setText(String.valueOf(this.tpPackage.getNumRolls()));
-        this.binding.squaresPerRollEditable.setText(String.valueOf(this.tpPackage.getNumSquaresPerRoll()));
-        this.binding.storeNameEditable.setText(this.tpPackage.getStoreName());
-        this.binding.storeTownNameEditable.setText(this.tpPackage.getStoreTownName());
+        if (this.tpPackage == null) {
+            return;
+        }
+        if (this.tpPackage.getBrand() != null)
+            this.binding.brandNameEditable.setText(this.tpPackage.getBrand());
+        if (String.valueOf(this.tpPackage.getPrice()) != null)
+            this.binding.priceEditable.setText(String.valueOf(this.tpPackage.getPrice()));
+        if (String.valueOf(this.tpPackage.getNumRolls()) != null)
+            this.binding.numRollsEditable.setText(String.valueOf(this.tpPackage.getNumRolls()));
+        if (String.valueOf(this.tpPackage.getNumSquaresPerRoll()) != null)
+            this.binding.squaresPerRollEditable.setText(String.valueOf(this.tpPackage.getNumSquaresPerRoll()));
+        if (this.tpPackage.getStoreName() != null)
+            this.binding.storeNameEditable.setText(this.tpPackage.getStoreName());
+        if (this.tpPackage.getStoreTownName() != null)
+            this.binding.storeTownNameEditable.setText(this.tpPackage.getStoreTownName());
     }
 
     /**

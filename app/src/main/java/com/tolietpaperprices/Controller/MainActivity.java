@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 
 import com.tolietpaperprices.Model.TPPackage;
@@ -28,6 +27,7 @@ import java.io.Serializable;
 public class MainActivity extends AppCompatActivity implements IMainView.Listener, IAddTPView.Listener, IDisplayTPView.Listener {
     public static final String IN_PROGRESS = "in progress";
     public static final String LIST_OF_PACKAGES_KEY = "list of packages key";
+    public static final String PACKAGE_ORGANIZER_KEY = "package organizer key";
     public static String TPP = "tpp";
     private IMainView mainView;
     private PackageOrganizer packageOrganizer;
@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     protected void onCreate(Bundle savedInstanceState) {
         getSupportFragmentManager().setFragmentFactory(new TPPFragmentFactory(this));
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            this.packageOrganizer = (PackageOrganizer) savedInstanceState.getSerializable(PACKAGE_ORGANIZER_KEY);
+        }
 
         this.mainView = new MainView(this,this);
         setContentView(this.mainView.getRootView());
@@ -63,22 +67,26 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     /**
      * Saves in progress when resource constraints are destroyed
      * @param outState
-     * @param outPersistentState
      */
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-        outState.putBoolean(IN_PROGRESS, true);
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean(this.IN_PROGRESS, true);
+        outState.putSerializable(this.PACKAGE_ORGANIZER_KEY, this.packageOrganizer);
     }
 
     /**
      * Restores instance when it was destroyed
      * @param savedInstanceState
-     * @param persistentState
      */
     @Override
-    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onRestoreInstanceState(savedInstanceState, persistentState);
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            this.packageOrganizer = (PackageOrganizer) savedInstanceState.getSerializable(this.PACKAGE_ORGANIZER_KEY);
+        }
     }
 
     /**
@@ -95,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void onDisplayMenuButton() {
         Bundle fragArgs = new Bundle();
-        fragArgs.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+        fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
         Fragment displayPackage = new DisplayTPView(this);
         displayPackage.setArguments(fragArgs);
         this.mainView.displayFragment(displayPackage, false, "display");
@@ -123,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         }
 
         Bundle fragArgs = new Bundle();
-        fragArgs.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+        fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
         Fragment displayPackage = new DisplayTPView(this);
         displayPackage.setArguments(fragArgs);
         this.mainView.displayFragment(displayPackage, true, "display");
@@ -135,8 +143,11 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
      */
     @Override
     public void editPackageButton(int index) {
-        Fragment addPackage = new AddTPView(this,
-                this.packageOrganizer.getListOfPackages().get(index), index);
+        Bundle fragArgs = new Bundle();
+        fragArgs.putSerializable(AddTPView.PACKAGE_KEY, this.packageOrganizer.getListOfPackages().get(index));
+        fragArgs.putSerializable(AddTPView.INDEX_KEY, index);
+        Fragment addPackage = new AddTPView(this);
+        addPackage.setArguments(fragArgs);
         this.mainView.displayFragment(addPackage, false, "add");
     }
 
@@ -148,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     public void deletePackageButton(int index) {
         this.packageOrganizer.deletePackage(index);
         Bundle fragArgs = new Bundle();
-        fragArgs.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+        fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
         Fragment displayPackage = new DisplayTPView(this);
         displayPackage.setArguments(fragArgs);
         this.mainView.displayFragment(displayPackage, true, "display");
