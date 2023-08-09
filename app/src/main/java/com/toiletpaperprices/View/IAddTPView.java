@@ -1,9 +1,9 @@
-package com.tolietpaperprices.View;
+package com.toiletpaperprices.View;
 
-import com.tolietpaperprices.Model.TPPackage;
+import com.toiletpaperprices.Model.TPPackage;
 
 /**
- * Intferface for add view
+ * Interface for add view
  *
  * @author Emily
  */

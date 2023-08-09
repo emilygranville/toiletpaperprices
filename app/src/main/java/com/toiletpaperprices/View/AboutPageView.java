@@ -1,4 +1,4 @@
-package com.tolietpaperprices.View;
+package com.toiletpaperprices.View;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,13 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.tolietpaperprices.Controller.MainActivity;
-import com.tolietpaperprices.Model.TPPackage;
-import com.tolietpaperprices.databinding.FragmentAboutPageBinding;
-import com.tolietpaperprices.databinding.FragmentDisplayTpBinding;
-
-import java.io.Serializable;
-import java.util.List;
+import com.toiletpaperprices.databinding.FragmentAboutPageBinding;
 
 /**
  * A class for the view of about page
@@ -51,7 +45,7 @@ public class AboutPageView extends Fragment implements IAboutPageView {
     }
 
     /**
-     * Saves information when resource constraints are destoryed
+     * Saves information when resource constraints are destroyed
      * @param outState Bundle in which to place your saved state.
      */
     @Override

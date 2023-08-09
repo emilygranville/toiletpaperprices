@@ -1,10 +1,10 @@
-package com.tolietpaperprices.Model;
+package com.toiletpaperprices.Model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TolietPaperPackageTest {
+class TPPackageTest {
     TPPackage firstPackage = new TPPackage("Charmin",
             TPPackage.Style.SOFT, 5, 10, 6,
             "Target", "Town 1");

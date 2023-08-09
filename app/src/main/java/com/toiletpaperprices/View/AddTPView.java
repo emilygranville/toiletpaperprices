@@ -1,4 +1,4 @@
-package com.tolietpaperprices.View;
+package com.toiletpaperprices.View;
 
 import android.os.Bundle;
 
@@ -13,9 +13,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.tolietpaperprices.Model.TPPackage;
-import com.tolietpaperprices.R;
-import com.tolietpaperprices.databinding.FragmentAddTpBinding;
+import com.toiletpaperprices.Model.TPPackage;
+import com.toiletpaperprices.R;
+import com.toiletpaperprices.databinding.FragmentAddTpBinding;
 
 
 /**
@@ -122,16 +122,18 @@ public class AddTPView extends Fragment implements IAddTPView {
             public void onClick(View view) {
                 if (isFilledOut()) {
                     boolean isEditedPackage = AddTPView.this.tpPackage != null;
-                    AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage(), isEditedPackage, AddTPView.this.index);
+                    AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage(),
+                            isEditedPackage, AddTPView.this.index);
                 } else {
-                    Snackbar.make(view, AddTPView.this.getContext().getResources().getString(R.string.not_filled_correctly_label), Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, AddTPView.this.getContext().getResources().getString(R.string.not_filled_correctly_label),
+                            Snackbar.LENGTH_LONG).show();
                 }
             }
         });
     }
 
     /**
-     * Saves information when resource constraints are destoryed
+     * Saves information when resource constraints are destroyed
      * @param outState Bundle in which to place your saved state.
      */
     @Override
@@ -174,7 +176,8 @@ public class AddTPView extends Fragment implements IAddTPView {
         if (String.valueOf(this.tpPackage.getNumRolls()) != null)
             this.binding.numRollsEditable.setText(String.valueOf(this.tpPackage.getNumRolls()));
         if (String.valueOf(this.tpPackage.getNumSquaresPerRoll()) != null)
-            this.binding.squaresPerRollEditable.setText(String.valueOf(this.tpPackage.getNumSquaresPerRoll()));
+            this.binding.squaresPerRollEditable.setText(
+                    String.valueOf(this.tpPackage.getNumSquaresPerRoll()));
         if (this.tpPackage.getStoreName() != null)
             this.binding.storeNameEditable.setText(this.tpPackage.getStoreName());
         if (this.tpPackage.getStoreTownName() != null)

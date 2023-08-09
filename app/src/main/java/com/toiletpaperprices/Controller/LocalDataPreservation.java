@@ -1,9 +1,9 @@
-package com.tolietpaperprices.Controller;
+package com.toiletpaperprices.Controller;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.tolietpaperprices.Model.PackageOrganizer;
+import com.toiletpaperprices.Model.PackageOrganizer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,11 +19,11 @@ import java.io.ObjectOutputStream;
  */
 public class LocalDataPreservation implements IDataPreservation {
 
-    public static final String PACKAGE_ORAGANIZER_FILE_NAME = "package oraganizer file name";
+    public static final String PACKAGE_ORGANIZER_FILE_NAME = "package organizer file name";
 
     @Override
     public void savePackageOrganizer(Context context, PackageOrganizer packageOrganizer) {
-        File outFile = new File(context.getFilesDir(), this.PACKAGE_ORAGANIZER_FILE_NAME);
+        File outFile = new File(context.getFilesDir(), this.PACKAGE_ORGANIZER_FILE_NAME);
         try {
             FileOutputStream fileOutStream = new FileOutputStream(outFile);
             ObjectOutputStream objectOutStream = new ObjectOutputStream(fileOutStream);
@@ -37,7 +37,7 @@ public class LocalDataPreservation implements IDataPreservation {
 
     @Override
     public PackageOrganizer loadPackageOrganizer(Context context) {
-        File inFile = new File(context.getFilesDir(), this.PACKAGE_ORAGANIZER_FILE_NAME);
+        File inFile = new File(context.getFilesDir(), this.PACKAGE_ORGANIZER_FILE_NAME);
         if (inFile.isFile()) {
             try {
                 FileInputStream fileInStream = new FileInputStream(inFile);

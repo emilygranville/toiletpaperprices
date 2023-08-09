@@ -1,6 +1,5 @@
-package com.tolietpaperprices.View;
+package com.toiletpaperprices.View;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,10 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.view.View.OnClickListener;
-
-import com.google.android.material.snackbar.Snackbar;
-import com.tolietpaperprices.databinding.ActivityMainBinding;
+import com.toiletpaperprices.databinding.ActivityMainBinding;
 
 /**
  * Class for the main view (primarily menu)

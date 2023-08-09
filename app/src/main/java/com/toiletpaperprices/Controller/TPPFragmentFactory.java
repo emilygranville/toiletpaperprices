@@ -1,4 +1,4 @@
-package com.tolietpaperprices.Controller;
+package com.toiletpaperprices.Controller;
 
 import android.util.Log;
 
@@ -15,7 +15,7 @@ import java.lang.reflect.InvocationTargetException;
  * @author Emily
  */
 public class TPPFragmentFactory extends FragmentFactory {
-    private static final String PACKAGE_NAME = "com.tolietpaperprices.View";
+    private static final String PACKAGE_NAME = "com.toiletpaperprices.View";
     private final MainActivity controller;
 
     /**

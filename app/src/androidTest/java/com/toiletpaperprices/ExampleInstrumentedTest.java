@@ -1,4 +1,4 @@
-package com.tolietpaperprices;
+package com.toiletpaperprices;
 
 import android.content.Context;
 

@@ -1,9 +1,8 @@
-package com.tolietpaperprices.Controller;
+package com.toiletpaperprices.Controller;
 
 import android.content.Context;
 
-import com.tolietpaperprices.Model.PackageOrganizer;
-import com.tolietpaperprices.Model.TPPackage;
+import com.toiletpaperprices.Model.PackageOrganizer;
 
 /**
  * Interface for preserving data

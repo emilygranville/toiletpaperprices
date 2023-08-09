@@ -1,4 +1,4 @@
-package com.tolietpaperprices.View;
+package com.toiletpaperprices.View;
 
 /**
  * Interface for about page view

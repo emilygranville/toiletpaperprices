@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.tolietpaperprices"
+    namespace = "com.toiletpaperprices"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.tolietpaperprices"
+        applicationId = "com.toiletpaperprices"
         minSdk = 26
         targetSdk = 33
         versionCode = 1

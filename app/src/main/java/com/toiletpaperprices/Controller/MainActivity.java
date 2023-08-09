@@ -1,4 +1,4 @@
-package com.tolietpaperprices.Controller;
+package com.toiletpaperprices.Controller;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,22 +8,22 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.tolietpaperprices.Model.PackageOrganizer;
-import com.tolietpaperprices.Model.TPPackage;
-import com.tolietpaperprices.View.AboutPageView;
-import com.tolietpaperprices.View.AddTPView;
-import com.tolietpaperprices.View.DisplayTPView;
-import com.tolietpaperprices.View.IAboutPageView;
-import com.tolietpaperprices.View.IAddTPView;
-import com.tolietpaperprices.View.IDisplayTPView;
-import com.tolietpaperprices.View.IMainView;
-import com.tolietpaperprices.View.MainView;
+import com.toiletpaperprices.Model.PackageOrganizer;
+import com.toiletpaperprices.Model.TPPackage;
+import com.toiletpaperprices.View.AboutPageView;
+import com.toiletpaperprices.View.AddTPView;
+import com.toiletpaperprices.View.DisplayTPView;
+import com.toiletpaperprices.View.IAboutPageView;
+import com.toiletpaperprices.View.IAddTPView;
+import com.toiletpaperprices.View.IDisplayTPView;
+import com.toiletpaperprices.View.IMainView;
+import com.toiletpaperprices.View.MainView;
 
 import java.io.Serializable;
 
 /**
  * Controller for the app
- * Acts as a bridge between the list and the infromation and the display
+ * Acts as a bridge between the list and the information and the display
  *
  * @author Emily
  */
@@ -48,19 +48,22 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         this.packageOrganizer = loadData.loadPackageOrganizer(this);
 
         if (savedInstanceState != null) {
-            this.packageOrganizer = (PackageOrganizer) savedInstanceState.getSerializable(PACKAGE_ORGANIZER_KEY);
+            this.packageOrganizer =
+                    (PackageOrganizer) savedInstanceState.getSerializable(PACKAGE_ORGANIZER_KEY);
         }
 
         this.mainView = new MainView(this,this);
         setContentView(this.mainView.getRootView());
 
         if (savedInstanceState == null) {
-            if (this.packageOrganizer.getListOfPackages() == null || this.packageOrganizer.getListOfPackages().isEmpty()) {
+            if (this.packageOrganizer.getListOfPackages() == null
+                    || this.packageOrganizer.getListOfPackages().isEmpty()) {
                 Fragment addPackage = new AddTPView(this);
                 this.mainView.displayFragment(addPackage, false, "add");
             } else {
                 Bundle fragArgs = new Bundle();
-                fragArgs.putSerializable(LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+                fragArgs.putSerializable(LIST_OF_PACKAGES_KEY,
+                        (Serializable) this.packageOrganizer.getListOfPackages());
                 Fragment displayPackage = new DisplayTPView(this);
                 displayPackage.setArguments(fragArgs);
                 this.mainView.displayFragment(displayPackage, false, "display");
@@ -89,7 +92,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         super.onRestoreInstanceState(savedInstanceState);
 
         if (savedInstanceState != null) {
-            this.packageOrganizer = (PackageOrganizer) savedInstanceState.getSerializable(this.PACKAGE_ORGANIZER_KEY);
+            this.packageOrganizer =
+                    (PackageOrganizer) savedInstanceState.getSerializable(this.PACKAGE_ORGANIZER_KEY);
         }
     }
 
@@ -109,7 +113,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void onDisplayMenuButton() {
         Bundle fragArgs = new Bundle();
-        fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+        fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY,
+                (Serializable) this.packageOrganizer.getListOfPackages());
         Fragment displayPackage = new DisplayTPView(this);
         displayPackage.setArguments(fragArgs);
         this.mainView.displayFragment(displayPackage, false, "display");
@@ -140,7 +145,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         saveData.savePackageOrganizer(this, this.packageOrganizer);
 
         Bundle fragArgs = new Bundle();
-        fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+        fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY,
+                (Serializable) this.packageOrganizer.getListOfPackages());
         Fragment displayPackage = new DisplayTPView(this);
         displayPackage.setArguments(fragArgs);
         this.mainView.displayFragment(displayPackage, true, "display");
@@ -153,7 +159,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
     @Override
     public void editPackageButton(int index) {
         Bundle fragArgs = new Bundle();
-        fragArgs.putSerializable(AddTPView.PACKAGE_KEY, this.packageOrganizer.getListOfPackages().get(index));
+        fragArgs.putSerializable(AddTPView.PACKAGE_KEY,
+                this.packageOrganizer.getListOfPackages().get(index));
         fragArgs.putSerializable(AddTPView.INDEX_KEY, index);
         Fragment addPackage = new AddTPView(this);
         addPackage.setArguments(fragArgs);
@@ -172,7 +179,8 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         saveData.savePackageOrganizer(this, this.packageOrganizer);
 
         Bundle fragArgs = new Bundle();
-        fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY, (Serializable) this.packageOrganizer.getListOfPackages());
+        fragArgs.putSerializable(this.LIST_OF_PACKAGES_KEY,
+                (Serializable) this.packageOrganizer.getListOfPackages());
         Fragment displayPackage = new DisplayTPView(this);
         displayPackage.setArguments(fragArgs);
         this.mainView.displayFragment(displayPackage, true, "display");

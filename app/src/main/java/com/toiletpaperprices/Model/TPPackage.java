@@ -1,10 +1,10 @@
-package com.tolietpaperprices.Model;
+package com.toiletpaperprices.Model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * Class containing information for one package of toliet paper
+ * Class containing information for one package of toilet paper
  *
  * @author Emily
  */
@@ -51,7 +51,7 @@ public class TPPackage implements Serializable, Comparable<TPPackage> {
     }
 
     /**
-     * Getters and setters for TolietPaperPackage
+     * Getters and setters for ToiletPaperPackage
      */
     public String getBrand() {
         return brand;
