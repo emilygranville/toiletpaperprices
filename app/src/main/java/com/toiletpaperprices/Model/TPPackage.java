@@ -2,6 +2,7 @@ package com.toiletpaperprices.Model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Class containing information for one package of toilet paper
@@ -145,6 +146,15 @@ public class TPPackage implements Serializable, Comparable<TPPackage> {
     }
 
     /**
+     * Makes a string of the local date time
+     * @return
+     */
+    public String dateToString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d uuuu");
+        return this.dateOfEntry.format(formatter);
+    }
+
+    /**
      * Makes a string of the class
      * @return
      */
@@ -154,6 +164,6 @@ public class TPPackage implements Serializable, Comparable<TPPackage> {
                         "Price per square: $%f, Store: %s, Town: %s, Date: %s",
                 this.brand, this.style.toString(), this.price, this.numRolls,
                 this.numSquaresPerRoll, this.pricePerSquare, this.storeName,
-                this.storeTownName, this.dateOfEntry.toString());
+                this.storeTownName, dateToString());
     }
 }
