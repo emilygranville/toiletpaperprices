@@ -26,13 +26,13 @@
             <TextView
                 android:id="@+id/brand_name_label"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="@string/brand_name_label" />
 
             <EditText
                 android:id="@+id/brand_name_editable"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/brand_name_hint"
                 android:inputType="text" />
@@ -48,7 +48,7 @@
             <TextView
                 android:id="@+id/style_label"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="@string/style_label" />
         </LinearLayout>
 
@@ -61,13 +61,13 @@
             <TextView
                 android:id="@+id/price_label"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="@string/price_label" />
 
             <EditText
                 android:id="@+id/price_editable"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/price_hint"
                 android:inputType="numberDecimal" />
@@ -83,13 +83,13 @@
             <TextView
                 android:id="@+id/num_rolls_label"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="@string/num_rolls_label" />
 
             <EditText
                 android:id="@+id/num_rolls_editable"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/num_rolls_hint"
                 android:inputType="number" />
@@ -104,13 +104,13 @@
             <TextView
                 android:id="@+id/squares_per_roll_label"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="@string/squares_per_roll_label" />
 
             <EditText
                 android:id="@+id/squares_per_roll_editable"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/squares_per_roll_hint"
                 android:inputType="number" />
@@ -125,13 +125,13 @@
             <TextView
                 android:id="@+id/store_name_label"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="@string/store_name_label" />
 
             <EditText
                 android:id="@+id/store_name_editable"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/store_name_hint"
                 android:inputType="text" />
@@ -147,13 +147,13 @@
             <TextView
                 android:id="@+id/store_town_name_label"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="@string/store_town_name_label" />
 
             <EditText
                 android:id="@+id/store_town_name_editable"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/store_town_name_hint"
                 android:inputType="text" />

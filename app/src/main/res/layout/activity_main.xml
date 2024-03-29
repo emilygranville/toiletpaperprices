@@ -7,38 +7,50 @@
     tools:context="com.toiletpaperprices.Controller.MainActivity">
 
     <LinearLayout
-        android:id="@+id/menu_hlayout"
-        android:layout_width="match_parent"
+        android:id="@+id/menu_vlayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/about_menu_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/about_button_label" />
 
-        <Button
-            android:id="@+id/display_menu_button"
+        <LinearLayout
+            android:id="@+id/menu_hlayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/display_button_label" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/add_menu_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_button_label" />
+            <Button
+                android:id="@+id/display_menu_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/display_button_label" />
+
+            <Button
+                android:id="@+id/add_menu_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_button_label" />
+        </LinearLayout>
     </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fragment_container"
+        android:name="com.toiletpaperprices.View.AddTPView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -48,5 +60,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menu_hlayout" />
+        app:layout_constraintTop_toBottomOf="@+id/menu_vlayout"
+        tools:layout="@layout/fragment_add_tp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
