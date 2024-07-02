@@ -12,7 +12,7 @@
     <color name="primary_color">#358043</color>
     <color name="secondary_color">#265A30</color>
     <color name="third_color">#644b20</color>
-    <color name="fourth_color">#b0c5e9</color>
+    <color name="fourth_color">#4A3818</color>
 
     <color name="primary_color_night">#4CB35F</color>
     <color name="secondary_color_night">@color/primary_color</color>
