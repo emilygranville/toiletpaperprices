@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Toilet Paper Prices</string>
     <!-- Main activity strings -->
     <string name="about_button_label">ABOUT</string>
     <string name="display_button_label">DISPLAY LIST</string>
