@@ -20,10 +20,11 @@
 
         <Button
             android:id="@+id/about_menu_button"
+            style="@style/big_button_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about_button_label"
-            style="@style/big_button_style" />
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/about_button_label" />
 
         <LinearLayout
             android:id="@+id/menu_hlayout"
@@ -37,17 +38,19 @@
 
             <Button
                 android:id="@+id/display_menu_button"
+                style="@style/big_button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/display_button_label"
-                style="@style/big_button_style" />
+                android:layout_marginHorizontal="5dp"
+                android:text="@string/display_button_label" />
 
             <Button
                 android:id="@+id/add_menu_button"
+                style="@style/big_button_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_button_label"
-                style="@style/big_button_style" />
+                android:layout_marginHorizontal="5dp"
+                android:text="@string/add_button_label" />
         </LinearLayout>
     </LinearLayout>
 
