@@ -3,5 +3,7 @@
     <style name="Base.Theme.ToiletPaperPrices" parent="tpp_app_style">
         <item name="colorPrimary">@color/primary_color_night</item>
         <item name="android:colorSecondary">@color/secondary_color_night</item>
+        <item name="android:textColorSecondary">@color/in_secondary_text_color</item>
+        <item name="android:textColorHint">@color/dark_hint_text_color</item>
     </style>
 </resources>

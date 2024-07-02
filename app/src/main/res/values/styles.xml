@@ -8,6 +8,7 @@
         <item name="android:textColorSecondary">@color/secondary_text_color</item>
         <item name="android:textColorPrimaryInverse">@color/in_primary_text_color</item>
         <item name="android:textColorSecondaryInverse">@color/in_secondary_text_color</item>
+        <item name="colorPrimaryDark">@color/secondary_color</item>
     </style>
 
     <style name="default_text_style" parent="android:Theme">
