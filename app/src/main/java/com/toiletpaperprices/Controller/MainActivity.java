@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements IMainView.Listene
         fragArgs.putSerializable(AddTPView.INDEX_KEY, index);
         Fragment addPackage = new AddTPView(this);
         addPackage.setArguments(fragArgs);
-        this.mainView.displayFragment(addPackage, false, "add");
+        this.mainView.displayFragment(addPackage, true, "add");
     }
 
     /**
