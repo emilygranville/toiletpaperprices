@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.toiletpaperprices.Controller.MainActivity;
@@ -86,7 +88,7 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
     }
 
     /**
-     * Saves information when resource constraints are destoryed
+     * Saves information when resource constraints are destroyed
      * @param outState Bundle in which to place your saved state.
      */
     @Override
@@ -126,12 +128,16 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
                 innerVertical.setOrientation(LinearLayout.VERTICAL);
 
                 TextView newPackage = new TextView(this.getContext());
-                newPackage.setText(tpPackage.toString() + "\n");
+                newPackage.setText(tpPackage.toString());
                 innerVertical.addView(newPackage);
+                //innerVertical.setBackgroundColor(getResources().getColor(R.color.light_gray_text));
 
                 LinearLayout innerHorizontal = new LinearLayout(this.getContext());
+                //RelativeLayout innerHorizontal = new RelativeLayout(this.getContext());
                 innerHorizontal.setOrientation(LinearLayout.HORIZONTAL);
-                innerHorizontal.setMinimumWidth(FrameLayout.LayoutParams.MATCH_PARENT);
+                innerHorizontal.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+                //innerHorizontal.setBackgroundColor(getResources().getColor(R.color.fourth_color));
 
                 Button editButton = new Button(this.getContext());
                 editButton.setId(i);
@@ -142,19 +148,26 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
                         DisplayTPView.this.listener.editPackageButton(editButton.getId());
                     }
                 });
-                editButton.setMinimumWidth(FrameLayout.LayoutParams.MATCH_PARENT);
+//                RelativeLayout.LayoutParams editLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+//                editLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+//                //editLayoutParams.addRule(RelativeLayout.ALIGN_RIGHT, (i * -1));
+//                editButton.setLayoutParams(editLayoutParams);
                 innerHorizontal.addView(editButton);
 
                 Button deleteButton = new Button(this.getContext());
-                deleteButton.setId(i);
+                deleteButton.setId(i * -1);
                 deleteButton.setText(this.getContext().getResources().getString(R.string.delete_button_label));
                 deleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        DisplayTPView.this.listener.deletePackageButton(deleteButton.getId());
+                        DisplayTPView.this.listener.deletePackageButton(deleteButton.getId() * -1);
                     }
                 });
-                deleteButton.setMinimumWidth(FrameLayout.LayoutParams.MATCH_PARENT);
+//                RelativeLayout.LayoutParams deleteLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+//                //deleteLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+//                deleteLayoutParams.addRule(RelativeLayout.toRightof, i);
+//                deleteButton.setLayoutParams(deleteLayoutParams);
+                //deleteButton.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
                 innerHorizontal.addView(deleteButton);
 
                 innerVertical.addView(innerHorizontal);

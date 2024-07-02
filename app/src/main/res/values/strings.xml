@@ -30,5 +30,5 @@
     <!-- About fragment strings -->
     <string name="about_page_text_text">Input information about toilet paper packages, add it to the list, and see the display in the display page.
         \n\nTo input packages with similar information, press the back button. It will automatically fill in the information from the previous entry, which you can edit to make a new package based on the previous package.
-        \n\nCode written by Emily Granville. Logo made by Thomas Granville</string>
+        \n\nCode written by Emily Granville. Logo made by Thomas Granville.</string>
 </resources>
