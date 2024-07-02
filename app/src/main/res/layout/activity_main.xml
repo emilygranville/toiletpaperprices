@@ -22,7 +22,8 @@
             android:id="@+id/about_menu_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about_button_label" />
+            android:text="@string/about_button_label"
+            style="@style/big_button_style" />
 
         <LinearLayout
             android:id="@+id/menu_hlayout"
@@ -38,13 +39,15 @@
                 android:id="@+id/display_menu_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/display_button_label" />
+                android:text="@string/display_button_label"
+                style="@style/big_button_style" />
 
             <Button
                 android:id="@+id/add_menu_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_button_label" />
+                android:text="@string/add_button_label"
+                style="@style/big_button_style" />
         </LinearLayout>
     </LinearLayout>
 

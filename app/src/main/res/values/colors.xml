@@ -3,4 +3,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="day_hint_color">#4c4c4c</color>
+    <color name="primary_color">#358043</color>
+    <color name="secondary_color">#265A30</color>
+    <color name="third_color">#644b20</color>
+    <color name="fourth_color">#b0c5e9</color>
+
+    <color name="primary_color_night">#4CB35F</color>
+    <color name="secondary_color_night">@color/primary_color</color>
+
+    <!-- this is the color used for dynamically added buttons -->
+    <color name="primary_text_color">@color/white</color>
+
+    <!-- this is the color used for text in textviews -->
+    <color name="secondary_text_color">@color/black</color>
+
+    <color name="in_primary_text_color">@color/white</color>
+    <color name="in_secondary_text_color">@color/white</color>
 </resources>

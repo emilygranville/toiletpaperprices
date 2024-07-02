@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="tpp_app_style" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textViewStyle">@style/default_text_style</item>
+        <item name="android:buttonStyle">@style/little_button_style</item>
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+        <item name="android:textColorPrimaryInverse">@color/in_primary_text_color</item>
+        <item name="android:textColorSecondaryInverse">@color/in_secondary_text_color</item>
+    </style>
+
+    <style name="default_text_style" parent="android:Theme">
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+
+    <style name="big_button_style" parent="android:Theme">
+        <item name="android:textAppearanceButton">@style/default_text_style</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+
+        <item name="android:backgroundTint">@color/primary_color</item>
+        <item name="rippleColor">@color/secondary_color</item>
+
+        <item name="android:radius">@style/button_rad_size</item>
+    </style>
+
+    <style name="little_button_style" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:backgroundTint">@color/third_color</item>
+        <item name="rippleColor">@color/fourth_color</item>
+        <item name="android:textAppearanceButton">@style/default_text_style</item>
+    </style>
+
+    <style name="button_rad_size">50dp</style>
+
+</resources>

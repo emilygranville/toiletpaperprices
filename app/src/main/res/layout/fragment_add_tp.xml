@@ -164,7 +164,8 @@
             android:id="@+id/add_tp_done_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_tp_done_button_label" />
+            android:text="@string/add_tp_done_button_label"
+            style="@style/big_button_style" />
 
     </LinearLayout>
 
