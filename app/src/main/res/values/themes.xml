@@ -5,7 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
         <!--<item name="android:textColor">@color/black</item>-->
-        <item name="android:textColorHint">@color/light_hint_text_color</item>
+        <item name="android:textColorHint">@color/dark_hint_text_color</item>
     </style>
 
     <style name="Theme.ToiletPaperPrices" parent="Base.Theme.ToiletPaperPrices" />
