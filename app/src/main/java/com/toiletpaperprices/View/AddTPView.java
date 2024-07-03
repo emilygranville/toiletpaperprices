@@ -1,17 +1,25 @@
 package com.toiletpaperprices.View;
 
+import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatRadioButton;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.CompoundButtonCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.google.android.material.color.DynamicColors;
 import com.google.android.material.snackbar.Snackbar;
 import com.toiletpaperprices.Model.TPPackage;
 import com.toiletpaperprices.R;
@@ -91,8 +99,34 @@ public class AddTPView extends Fragment implements IAddTPView {
         }
 
         RadioGroup styleRadioGroup = new RadioGroup(this.getContext());
+        //android:textColorPrimary
+        //styleRadioGroup.(color);
+
+        //styleRadioGroup.setBackgroundColor(this.getContext().getColor());
         for (TPPackage.Style style : TPPackage.Style.values()) {
-            RadioButton button = new RadioButton(this.getContext());
+            AppCompatRadioButton button = new AppCompatRadioButton(this.getContext());
+
+            TypedValue typedValue = new TypedValue();
+            this.getContext().getTheme().resolveAttribute(android.R.attr.textColorPrimary, typedValue, true);
+            int primaryTextColor = typedValue.data;
+
+            Log.i("tpp", String.valueOf(primaryTextColor));
+
+//            CompoundButtonCompat.setButtonTintList(
+//                    button,
+//                    ContextCompat.getColorStateList(this.getContext(), primaryTextColor));
+
+            ColorStateList colorStateList = new ColorStateList(
+                    new int[][] {
+                            new int[]{-android.R.attr.state_enabled}, // Disabled
+                            new int[]{android.R.attr.state_enabled}   // Enabled
+                    },
+                    new int[] { primaryTextColor, primaryTextColor }
+            );
+
+            button.setButtonTintList(colorStateList); // set the color tint list
+
+
             styleRadioGroup.addView(button);
             button.setText(String.valueOf(style));
             if (this.tpPackage != null) {
