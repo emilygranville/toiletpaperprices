@@ -130,14 +130,9 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
                 TextView newPackage = new TextView(this.getContext());
                 newPackage.setText(tpPackage.toString());
                 innerVertical.addView(newPackage);
-                //innerVertical.setBackgroundColor(getResources().getColor(R.color.light_gray_text));
 
                 LinearLayout innerHorizontal = new LinearLayout(this.getContext());
-                //RelativeLayout innerHorizontal = new RelativeLayout(this.getContext());
                 innerHorizontal.setOrientation(LinearLayout.HORIZONTAL);
-                innerHorizontal.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-
-                //innerHorizontal.setBackgroundColor(getResources().getColor(R.color.fourth_color));
 
                 Button editButton = new Button(this.getContext());
                 editButton.setId(i);
@@ -148,10 +143,11 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
                         DisplayTPView.this.listener.editPackageButton(editButton.getId());
                     }
                 });
-//                RelativeLayout.LayoutParams editLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-//                editLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-//                //editLayoutParams.addRule(RelativeLayout.ALIGN_RIGHT, (i * -1));
-//                editButton.setLayoutParams(editLayoutParams);
+                editButton.setLayoutParams(
+                        new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                1));
                 innerHorizontal.addView(editButton);
 
                 Button deleteButton = new Button(this.getContext());
@@ -163,11 +159,12 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
                         DisplayTPView.this.listener.deletePackageButton(deleteButton.getId() * -1);
                     }
                 });
-//                RelativeLayout.LayoutParams deleteLayoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-//                //deleteLayoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-//                deleteLayoutParams.addRule(RelativeLayout.toRightof, i);
-//                deleteButton.setLayoutParams(deleteLayoutParams);
-                //deleteButton.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+                deleteButton.setLayoutParams(
+                        new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                1));
                 innerHorizontal.addView(deleteButton);
 
                 innerVertical.addView(innerHorizontal);
