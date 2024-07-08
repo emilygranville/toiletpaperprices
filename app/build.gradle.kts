@@ -10,8 +10,8 @@ android {
         applicationId = "com.toiletpaperprices"
         minSdk = 26
         targetSdk = 33
-        versionCode = 4
-        versionName = "1.4"
+        versionCode = 5
+        versionName = "1.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
