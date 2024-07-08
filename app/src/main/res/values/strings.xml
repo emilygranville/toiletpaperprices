@@ -28,7 +28,8 @@
     <string name="no_packages_label">No packages of toilet paper to compare</string>
 
     <!-- About fragment strings -->
-    <string name="about_page_text_text">Input information about toilet paper packages, add it to the list, and see the display in the display page.
+    <string name="about_page_text_text">Isn\'t it confusing how every brand prices toilet paper differently? Isn\'t it hard to know which truly is the best price, even with a different number of rolls per package and a different number of sheets per roll? With this, you can easily calculate the best price for toilet paper of many different brands!
+        \n\nInput information about toilet paper packages, add it to the list, and see the display in the display page.
         \n\nTo input packages with similar information, press the back button. It will automatically fill in the information from the previous entry, which you can edit to make a new package based on the previous package.
         \n\nCode written by Emily Granville. Logo made by Thomas Granville.</string>
 </resources>
