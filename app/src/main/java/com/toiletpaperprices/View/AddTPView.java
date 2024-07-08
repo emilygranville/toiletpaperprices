@@ -1,14 +1,11 @@
 package com.toiletpaperprices.View;
 
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatRadioButton;
-import androidx.core.content.ContextCompat;
-import androidx.core.widget.CompoundButtonCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -16,10 +13,8 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.google.android.material.color.DynamicColors;
 import com.google.android.material.snackbar.Snackbar;
 import com.toiletpaperprices.Model.TPPackage;
 import com.toiletpaperprices.R;
@@ -156,8 +151,13 @@ public class AddTPView extends Fragment implements IAddTPView {
             public void onClick(View view) {
                 if (isFilledOut()) {
                     boolean isEditedPackage = AddTPView.this.tpPackage != null;
-                    AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage(),
-                            isEditedPackage, AddTPView.this.index);
+                    try {
+                        AddTPView.this.listener.onTPAddDoneButton(AddTPView.this.makeNewPackage(),
+                                isEditedPackage, AddTPView.this.index);
+                    } catch (Exception e) {
+                        Snackbar.make(view, AddTPView.this.getContext().getResources().getString(R.string.invalid_add_input),
+                                Snackbar.LENGTH_LONG).show();
+                    }
                 } else {
                     Snackbar.make(view, AddTPView.this.getContext().getResources().getString(R.string.not_filled_correctly_label),
                             Snackbar.LENGTH_LONG).show();
@@ -235,12 +235,12 @@ public class AddTPView extends Fragment implements IAddTPView {
      */
     private TPPackage makeNewPackage() {
         return new TPPackage(
-                this.binding.brandNameEditable.getText().toString(),
-                this.currentStyle,
-                Double.parseDouble(this.binding.priceEditable.getText().toString()),
-                Integer.parseInt(this.binding.numRollsEditable.getText().toString()),
-                Integer.parseInt(this.binding.squaresPerRollEditable.getText().toString()),
-                this.binding.storeNameEditable.getText().toString(),
-                this.binding.storeTownNameEditable.getText().toString());
+            this.binding.brandNameEditable.getText().toString(),
+            this.currentStyle,
+            Double.parseDouble(this.binding.priceEditable.getText().toString()),
+            Integer.parseInt(this.binding.numRollsEditable.getText().toString()),
+            Integer.parseInt(this.binding.squaresPerRollEditable.getText().toString()),
+            this.binding.storeNameEditable.getText().toString(),
+            this.binding.storeTownNameEditable.getText().toString());
     }
 }

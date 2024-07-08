@@ -21,6 +21,7 @@
     <string name="store_town_name_hint">store town name</string>
     <string name="add_tp_done_button_label">DONE</string>
     <string name="not_filled_correctly_label">Make sure to enter information in all fields</string>
+    <string name="invalid_add_input">Invalid input, please try again</string>
 
     <!-- Display paper fragment strings -->
     <string name="edit_button_label">Edit</string>
