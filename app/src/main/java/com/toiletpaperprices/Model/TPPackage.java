@@ -160,8 +160,8 @@ public class TPPackage implements Serializable, Comparable<TPPackage> {
      */
     @Override
     public String toString() {
-        return String.format("Brand: %s, Style: %s, Price: $%.2f, Num Rolls: %d, Squares: %d, " +
-                        "Price per square: $%f, Store: %s, Town: %s, Date: %s",
+        return String.format("Brand: %s\nStyle: %s\nPrice: $%.2f\nNum Rolls: %d\nSquares: %d\n" +
+                        "Price per square: $%f\nStore: %s\nTown: %s\nDate: %s",
                 this.brand, this.style.toString(), this.price, this.numRolls,
                 this.numSquaresPerRoll, this.pricePerSquare, this.storeName,
                 this.storeTownName, dateToString());

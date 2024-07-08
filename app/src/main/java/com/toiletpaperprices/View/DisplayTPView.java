@@ -128,7 +128,8 @@ public class DisplayTPView extends Fragment implements IDisplayTPView {
                 innerVertical.setOrientation(LinearLayout.VERTICAL);
 
                 TextView newPackage = new TextView(this.getContext());
-                newPackage.setText(tpPackage.toString());
+                String displayString = tpPackage.toString();
+                newPackage.setText(displayString);
                 innerVertical.addView(newPackage);
 
                 LinearLayout innerHorizontal = new LinearLayout(this.getContext());
