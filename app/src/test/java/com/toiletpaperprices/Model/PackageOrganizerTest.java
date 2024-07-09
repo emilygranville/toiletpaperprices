@@ -39,10 +39,10 @@ class PackageOrganizerTest {
     void editPackage() {
         startOrganizer();
         TPPackage newPackage = new TPPackage("Charmin",
-                TPPackage.Style.STRONG, 3, 9, 8,
+                TPPackage.Style.STRONG, 300, 9, 8,
                 "Target", "Town 5");
         organizer.editPackage(newPackage, 1);
-        assertEquals("Town 5", organizer.getListOfPackages().get(1).getStoreTownName());
+        assertEquals("Town 5", organizer.getListOfPackages().get(2).getStoreTownName());
     }
 
     @Test
