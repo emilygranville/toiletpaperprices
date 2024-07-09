@@ -18,6 +18,7 @@
     <style name="big_button_style" parent="android:Theme">
         <item name="android:textAppearanceButton">@style/default_text_style</item>
         <item name="android:textColor">@color/light_text_color</item>
+        <item name="android:textStyle">bold</item>
 
         <item name="android:backgroundTint">@color/primary_color</item>
         <item name="rippleColor">@color/secondary_color</item>
