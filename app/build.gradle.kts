@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.toiletpaperprices"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.toiletpaperprices"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 5
         versionName = "1.5"
 
